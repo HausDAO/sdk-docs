@@ -1,7 +1,6 @@
 {
-  "index": "Introduction",
-  "get-started": "Get Started",
-  "features": "Features",
-  "themes": "Themes",
-  "advanced": "Advanced"
+  "home": "Home",
+  "sdk": "Software Development Kit",
+  "decentralized-infrastructure": "Decentralized Infrastructure",
+  "examples": "Examples"
 }
