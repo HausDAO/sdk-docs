@@ -15,8 +15,8 @@ Here is a basic guide. Each package README (and `project.json`) will have more d
 # run yarn to install all of the packages and dependencies
 
 ```
-<!---
-Replaced the https link with e2t's update. This section is not particularly instructional. It really needs to be elaborated to describe what to do and why
+
+Replaced t-he https link with e2t's update. This section is not particularly instructional. It really needs to be elaborated to describe what to do and why
 
 Need instructions on going into the directory before the prompt to install Yarn.
 
@@ -55,16 +55,6 @@ nx run app-name:build
 nx run hub-app:build
 
 ```
-<!---
-It's not clear that some of these are examples.
-Needs clear instructions: some setup of what you're about to look at and why it's significant.
-Add context and steps: when do you need to lint? When do you need to run the build?
-What about these commands? Should be included?
-nx run ui:build
-nx run daohaus-connect-feature:build
-nx run hub-app:build:production
---->
-
 
 ## Nx Generators
 
@@ -76,26 +66,9 @@ Our stack uses [Vite](https://vitejs.dev/) as our React build tool. This generat
 
 `nx g @nxext/react:application --name <name of app> --pascalCaseFiles true --routing true --style styled-components`
 
-<!---
-Needs context. What the hell are we doing at this step?
-Used for creating your own app. Should include naming conventions?
-Where to navigate to see the app?
-What can be done next?
-Remains rather unclear...
---->
-
-
 TypeScript is enabled and included by default.
 
 ### React Library
-
-<!---
-Not very clear what this step is for...
-Needs an overview for context.
-Now we are creating a Library. For a contributor that wants to add a library to the monorepo.
-Should include paths for the user...
-"If you want to accomplish this, choose this path" etc.
---->
 
 Our stack uses [Vite](https://vitejs.dev/) as our React build tool. This generator will scaffold a new React library (such as a component library) with `vite` and `styled-components`.
 
@@ -128,6 +101,6 @@ Notes: - use the `--publishable` flag for external libraries - use the `--builda
 # Towards the Builder Personna
 
 - Interfacing through NPM not through Github
-    - Need to know what NPM packages we have on offer
-    - Why they would want to install them
-    - What components they can pull in, what functions they can call, what they can do with those packages
+  - Need to know what NPM packages we have on offer
+  - Why they would want to install them
+  - What components they can pull in, what functions they can call, what they can do with those packages
