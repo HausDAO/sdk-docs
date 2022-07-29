@@ -1,0 +1,16 @@
+# Contract Utilities
+
+A new library we are building to provide ABIs (the json map of a contract) and all their deployed contract addresses. This data tells us about the functions of the contracts, how we can map it, and things of this nature. Contract Utilities also includes TypeScript wrapped versions of the contracts that you can pull into your JavaScript application to make transactions to the contracts.
+
+Contract Utilities are composed of the ABI Utilities and Baal Contract Services.
+
+These utilities are cross-correlated to the Write DAO Data, as these utilities will help you write data to the contracts (make function calls). There is one library called Contract Utilities that will help will writing DAO data needs.
+
+### ABI Utilities
+A way to store all the current ABIs and an app to retrieve them. This is very useful in Web3 development. When you are instantiating contracts with various libraries you will need the ABI so the library knows what to do with it.
+
+### Contract Addresses
+Helpers that will serve you the deployed contract addresses being used by your network. For example, retrieving the Moloch v3 contract address for the Goerli network.
+
+### Baal Contract Service / Typed Contract Client
+A library that wraps your contracts to provide type protection for the arguments you need. This will help you make contract calls from your app. This is one way that our SDK facillitates writing contract data easier. It is combined with Transaction Builder in the form of a React application.
