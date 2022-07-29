@@ -1,17 +1,16 @@
 # Subgraphs
 
-
 - [The Graph has really great documentation!](https://thegraph.com/docs/en/)
 - [Check out the DAOhaus Goerli Subgraph](https://thegraph.com/hosted-service/subgraph/hausdao/daohaus-v3-goerli), which also includes a powerful playground feature that will help you understand how data is queried.
 
-
-Contracts on Ethereum have events that can be written into your contracts. When there is a state change, these events fire off in the contracts. The Graph provides a framework for listening to those events, allowing you to map, rewrite, and transform that data into really sensible entities and databases representing the current state of your contracts. 
+Contracts on Ethereum have events that can be written into your contracts. When there is a state change, these events fire off in the contracts. The Graph provides a framework for listening to those events, allowing you to map, rewrite, and transform that data into really sensible entities and databases representing the current state of your contracts.
 
 Our Subgraph references the Moloch v3 contracts. We have deployed a factory contract for deploying DAO contracts on Moloch v3 and our Subgraph listens to this factory to create templates for each DAO that is launched. We then listen to each DAO contract for the events that they fire off.
 
 The core Moloch v3 contract contains all of the governance and proposal variables. There is also a Gnosis Safe contract comprising the DAO treasury, which we do not listen to (although there may be use cases in the future). A Loot and Share ERC-20 contract is also generated and registered in our Subgraph so we can track every time a token is transferred, created, minted, or burned to display holders and token balances.
 
 Our Subgraph is composed of the following entities (database tables):
+
 - DAO
 - Proposal
 - Vote
@@ -25,7 +24,8 @@ Our Subgraph is composed of the following entities (database tables):
 ##### DAO
 
 Displays all the data we track across the DAO contracts. Each DAO has one DAO record.
-```
+
+```graphql
 unique identifier and primary key of the entity
 
 id: ID!
@@ -124,8 +124,10 @@ eventTransactions: EventTransactio
 ```
 
 ##### Proposal
+
 Every time a proposal is made, we create a proposal entity that is related to the DAO. Most of the logic in our apps are related to proposal state changes: cancellation, sponsorship, voting periods, grace periods, pass, fail, and process. Each of these events updates the state of the proposal.
-```
+
+```graphql
 unique identifier and primary key of the entity
 
 id: ID!
@@ -284,7 +286,8 @@ votes: [Vote!]
 ##### Vote
 
 Every time a member votes it the process gets attached to the proposal entity.
-```
+
+```graphql
 unique identifier and primary key of the entity
 
 id: ID!
@@ -312,8 +315,10 @@ member: Member!
 ```
 
 ##### Record
+
 This is what we call the DAO database. We use Poster contracts to track. We have begun defining various schemas for other tables that DAOs might want to manage. This represents off-chain data, so not representing function calls to the contract. Instead we make calls to the Poster contract to generate json that is standardized and mapped into our subgraph to maintain that data. This allows us to validate to ensure alignment our schema, ensure that the individual sending a transaction is a member of the DAO, and verify that the call is made through a DAO vote (ratification). This can be used for any type of table! Pretty exciting stuff.
-```
+
+```graphql
 id: ID!
 createdAt: String!
 createdBy: Bytes!
@@ -325,8 +330,10 @@ content: String!
 ```
 
 ##### Member
+
 Every time an address receives loots or shares in the DAO a member entity is created. A member is composed on an address and the amount of shares they hold, as well as events like burning and transferring shares.
-```
+
+```graphql
 unique identifier and primary key of the entity
 
 id: ID!
@@ -370,8 +377,10 @@ votes: [Vote!]
 ```
 
 ##### RageQuit
+
 Upon executing the RageQuit event, this data represents the updates loot and shares.
-```
+
+```graphql
 unique identifier and primary key of the entity
 
 id: ID!
@@ -402,8 +411,10 @@ tokens: [Bytes!]!
 ```
 
 ##### Shaman
+
 Every time a Shaman is added to the DAO, the event is recorded here. A DAO can have many Shamans. This simple entity conveys the Shaman's contract address, its related DAO, and permission level.
-```
+
+```graphql
 unique identifier and primary key of the entity
 
 id: ID!
@@ -422,8 +433,10 @@ permissions: BigInt!
 ```
 
 ##### EventTransaction
+
 This entity conveys ways to query the subgraph after transactions are submitted to see when they are completed or failed. All interactions with DAO contracts are recorded here.
-```
+
+```graphql
 unique identifier and primary key of the entity
 
 id: ID!
@@ -437,8 +450,10 @@ daoAddress: Bytes
 ```
 
 ##### TokenLookup
+
 This entity connects the token, share, and loot addresses to the DAO. It allows us to record the state changes of these variables.
-```
+
+```graphql
 unique identifier and primary key of the entity (share or loot token address)
 
 id: ID!
