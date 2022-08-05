@@ -1,0 +1,111 @@
+# Member
+
+Every time an address receives loots or shares in the DAO a member entity is created. A member is composed on an address and the amount of shares they hold, as well as events like burning and transferring shares.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `createdAt`
+
+Block timestamp when the member entity was created (when the address first recieved shares or loot)
+
+```graphql
+createdAt: String!
+```
+
+## `txHash`
+
+Transaction where the member was created
+
+```graphql
+txHash: Bytes!
+```
+
+## `dao`
+
+Related DAO
+
+```graphql
+dao: Dao!
+```
+
+## `memberAddress`
+
+Address of the member
+
+```graphql
+memberAddress: Bytes!
+```
+
+## `shares`
+
+Current shares held by the member
+
+```graphql
+shares: BigInt!
+```
+
+## `loot`
+
+Current loot held by the member
+
+```graphql
+loot: BigInt!
+```
+
+## `delegatingTo`
+
+Address the member is delegating to
+
+```graphql
+delegatingTo: Bytes!
+```
+
+## `delegatingToMember`
+
+Subgraph ID of member the address is delegating to
+
+```graphql
+delegatingToMember: Member
+```
+
+## `lastDelegateUpdateTxHash`
+
+Transaction hash when the delegate was last updated
+
+```graphql
+lastDelegateUpdateTxHash: Bytes
+```
+
+## `delegateShares`
+
+Total amount of shares this address votes with (thier own plus delegated shares)
+
+```graphql
+delegateShares: BigInt!
+```
+
+## `delegateOf`
+
+Members this member is delegating too
+
+```graphql
+delegateOf: [Member!]
+```
+
+## `delegateOfCount`
+
+Related votes
+
+```graphql
+delegateOfCount: BigInt!
+```
+
+```graphql
+votes: [Vote!]
+```

@@ -1,0 +1,19 @@
+# TokenLookup
+
+This entity connects the token, share, and loot addresses to the DAO. It allows us to record the state changes of these variables.
+
+## `id`
+
+Unique identifier and primary key of the entity (share or loot token address)
+
+```graphql
+id: ID!
+```
+
+## `dao`
+
+Related DAO
+
+```graphql
+dao: Bytes!
+```

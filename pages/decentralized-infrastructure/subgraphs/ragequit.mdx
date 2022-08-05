@@ -1,0 +1,75 @@
+# RageQuit
+
+Upon executing the `ragequit` event, this data represents the updates loot and shares.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `createdAt`
+
+Block timestamp when the member ragequit
+
+```graphql
+createdAt: String!
+```
+
+## `txHash`
+
+Transaction where the ragequit occurred
+
+```graphql
+txHash: Bytes!
+```
+
+## `dao`
+
+Related DAO
+
+```graphql
+dao: Dao!
+```
+
+## `member`
+
+Related member
+
+```graphql
+member: Member!
+```
+
+## `to`
+
+Address the tokens were ragequit to
+
+```graphql
+to: Bytes!
+```
+
+## `shares`
+
+Number of shares ragequit
+
+```graphql
+shares: BigInt!
+```
+
+## `loot`
+
+Number of loot ragequit
+
+```graphql
+loot: BigInt!
+```
+
+## `tokens`
+
+List of treasury token addresses requested in the ragequit
+
+```graphql
+tokens: [Bytes!]!
+```
