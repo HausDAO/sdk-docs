@@ -1,8 +1,17 @@
 # Jobs
 
-Jobs are how we take our on-chain or subgraph data, process/transform this data, and render it into a form that is easier for us to consume. For example, with the DAOhaus Hub App we are concerned with vault balances for particular DAOs. Calculating those vault balances is pretty complicated to integrate into a front end process! It makes the frontend slow, while also requiring a great deal of work. To save us from this labor on the frontend, we focus these processes on the backend.
+Jobs are how we take on-chain or [Subgraph](subgraphs/overview) data and process and transform it into a format that is easier to consume.
 
-Jobs are like creating data pipelines. A producer is a task that takes data from, for example, the subgraph or similar public datasets and pushes it to a queue, which aligns work for another process at the end of the queue which takes action. This could mean calculating bulk totals that get pushed to Ceramic, aggregating DAOs across all chains on our subgraph into another database that we can query easier, or other kinds of data processing pipelines. Producer Jobs and Consumer Jobs are tied together to form very complex data processing flows.
+![decen-infra-flow-diagram](https://i.imgur.com/OtJ9FCT.jpg)
 
-![decen infra flow diagram](https://i.imgur.com/OtJ9FCT.jpg)
+Jobs create data pipelines. Creating a data processing pipeline on one end is the producer and on the other is the consumer. They can be chained together to accomplish complex data processing flows.
 
+For example, with the DAOhaus Hub app we are concerned about vault balances for different DAOs. Calculating these balances is pretty complicated to do in the front-end and makes apps slow. To improve performance we do it with a back-end process.
+
+## Producer Jobs
+
+A producer is a task that is taking data from a public dataset and pushing it into a queue. Aggregating DAO data across different networks on our Subgraph into a database allows for easier querying. This could mean calculating totals that get pushed to Ceramic.
+
+## Consumer Jobs
+
+Consumers are calculating the aggregated data. They take things off of the queue to take action and complete the work.
