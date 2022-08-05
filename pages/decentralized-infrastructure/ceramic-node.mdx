@@ -1,9 +1,15 @@
 # Ceramic Node
 
-Ceramic has a document style node, which is what we utilize. The node requires an IPFS node running behind it, as you will find in the repo. Check out [Ceramic's Node docs](https://developers.ceramic.network/run/nodes/nodes/) if you are interested in learning more. We use Ceramic to store our data. We compute and process this data with Jobs. The final end product data lives in decentralized Ceramic nodes.
+[Ceramic](https://ceramic.network/) allows for decentralized data storage. We use Ceramic for storing data to compute and process using [Jobs](jobs). The data output lives in decentralized Ceramic nodes.
 
-If you wanted to recreate DAOhaus entirely, you could setup your infrastructure through [Helm Charts](https://hackmd.io/@daohaus/V3Docs-HelmCharts). If you only wanted to recreate DAOhaus' frontend, you could pull calculated data from our Ceramic infrastructure, which is publicly accessible.
+Ceramic currently runs a document style node requiring [IPFS](https://infura.io/product/ipfs). To learn more about Ceramic nodes check out [Running Ceramic in production](https://developers.ceramic.network/run/nodes/nodes/).
 
-*Insert video walkthrough for setting up Ceramic Node*
+If you want to recreate the DAOhaus front-end, you can pull calculated data from our Ceramic infrastructure, which is publicly accessible.
 
-*Insert video walkthrough of **forking all of DAOhaus***
+Ceramic charts in the [`daohaus-monorepo`](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/infra-chart/ceramic).
+
+## Definitions
+
+If you are interested in creating apps using the data from our platform you can point to the Ceramic definitions.
+
+- How?
