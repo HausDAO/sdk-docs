@@ -1,0 +1,22 @@
+# Subgraphs
+
+Contracts on Ethereum have events that can be written into your contracts. When there is a state change, these events fire off in the contracts. The Graph provides a framework for listening to those events, allowing you to map, rewrite, and transform that data into really sensible entities and databases representing the current state of your contracts.
+
+- [The Graph Docs](https://thegraph.com/docs/en/)
+- [DAOhaus Goerli Subgraph](https://thegraph.com/hosted-service/subgraph/hausdao/daohaus-v3-goerli) Playground
+
+Our Subgraph references the [Moloch v3 contracts](../contracts). We have deployed a factory contract for deploying DAO contracts on Moloch v3 and our Subgraph listens to this factory to create templates for each DAO launched. We then listen to each DAO contract for the events they fire off.
+
+The core Moloch v3 contract contains governance and proposal variables. There is also a Gnosis Safe contract comprising the DAO treasury, which we do not listen to (although there may be use cases in the future). A Loot and Share ERC-20 contract is generated and registered in our Subgraph so we can track when tokens are transferred, created, minted, or burned to display holders and token balances.
+
+Our Subgraph is composed of the following entities:
+
+- [DAO](dao)
+- [Proposal](proposal)
+- [Vote](vote)
+- [Record](record)
+- [Member](member)
+- [RageQuit](ragequit)
+- [Shaman](shaman)
+- [EventTransaction](event-transaction)
+- [TokenLookup](token-lookup)

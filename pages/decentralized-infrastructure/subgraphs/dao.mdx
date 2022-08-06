@@ -1,0 +1,263 @@
+# DAO
+
+Displays the data we track across the DAO contracts. Each DAO has one DAO record.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `createdAt`
+
+Timestamp of the block when the dao was summoned
+
+```graphql
+createdAt: String!
+```
+
+## `createdBy`
+
+Address that created the dao
+
+```graphql
+createdBy: Bytes!
+```
+
+## `txHash`
+
+Transaction hash of the DAO contract deployment
+
+```graphql
+txHash: Bytes!
+```
+
+## `lootAddress`
+
+Contract address of the loot ERC-20 token
+
+```graphql
+lootAddress: Bytes!
+```
+
+## `sharesAddress`
+
+Contract address of the shares ERC-20 token
+
+```graphql
+sharesAddress: Bytes!
+```
+
+## `safeAddress`
+
+Contract address of the Gnosis Safe treasury
+
+```graphql
+safeAddress: Bytes!
+```
+
+## `lootPaused`
+
+Indicates if loot transferability is on or off
+
+```graphql
+lootPaused: Boolean!
+```
+
+## `sharesPaused`
+
+Indicates if shares transferability is on or off
+
+```graphql
+sharesPaused: Boolean!
+```
+
+## `gracePeriod`
+
+Length in seconds of the current grace period
+
+```graphql
+gracePeriod: BigInt!
+```
+
+## `votingPeriod`
+
+Length in seconds of the current voting period
+
+```graphql
+votingPeriod: BigInt!
+```
+
+## `votingPlusGraceDuration`
+
+Length in seconds of the current voting period and grace period
+
+```graphql
+votingPlusGraceDuration: BigInt!
+```
+
+## `proposalOffering`
+
+Amount of network token required as tribute to submit a proposal
+
+```graphql
+proposalOffering: BigInt!
+```
+
+## `quorumPercent`
+
+Minimum percentage of shares that must vote yes for it to pass
+
+```graphql
+quorumPercent: BigInt!
+```
+
+## `sponsorThreshold`
+
+Amount of shares needed to automatically sponsor a proposal
+
+```graphql
+sponsorThreshold: BigInt!
+```
+
+## `minRetentionPercent`
+
+Auto-fails a proposal if more than (1-`minRetentionPercent`) \* `totalShares` exit before processing
+
+```graphql
+minRetentionPercent: BigInt!
+```
+
+## `shareTokenName`
+
+Name of the ERC-20 shares token
+
+```graphql
+shareTokenName: String
+```
+
+## `shareTokenSymbol`
+
+Symbol of the ERC-20 shares token
+
+```graphql
+shareTokenSymbol: String
+```
+
+## `lootTokenName`
+
+Name of the ERC-20 loot token
+
+```graphql
+lootTokenName: String
+```
+
+## `lootTokenSymbol`
+
+Symbol of the ERC-20 loot token
+
+```graphql
+lootTokenSymbol: String
+```
+
+## `totalShares`
+
+Total circulating shares tokens
+
+```graphql
+totalShares: BigInt!
+```
+
+## `totalLoot`
+
+Total circulating loot tokens
+
+```graphql
+totalLoot: BigInt!
+```
+
+## `latestSponsoredProposalId`
+
+ID of the last sponsored proposal
+
+```graphql
+latestSponsoredProposalId: BigInt!
+```
+
+## `proposalCount`
+
+Count of proposals submitted
+
+```graphql
+proposalCount: BigInt!
+```
+
+## `activeMemberCount`
+
+Count of share or loot holding members
+
+```graphql
+activeMemberCount: BigInt!
+```
+
+## `name`
+
+Name of the DAO
+
+```graphql
+name: String
+```
+
+## `existingSafe`
+
+Was DAO summoned by an existing safe or did it create a new safe?
+
+```graphql
+existingSafe: Boolean!
+```
+
+## `proposals`
+
+Proposals scoped to this DAO
+
+```graphql
+proposals: [Proposal!]
+```
+
+## `members`
+
+Members scoped to this DAO
+
+```graphql
+members: [Member!]!
+```
+
+## `rageQuits`
+
+Ragequits scoped to this DAO
+
+```graphql
+rageQuits: [RageQuit!]
+```
+
+## `shaman`
+
+Shamans scoped to this DAO
+
+```graphql
+shaman: [Shaman!]
+```
+
+## `records`
+
+```graphql
+records: [Record!]
+```
+
+## `eventTransactions`
+
+```graphql
+eventTransactions: EventTransaction
+```

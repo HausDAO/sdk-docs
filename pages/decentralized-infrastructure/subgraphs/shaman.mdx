@@ -1,0 +1,43 @@
+# Shaman
+
+Every time a Shaman is added to the DAO, the event is recorded here. A DAO can have many Shamans. This simple entity conveys the Shaman's contract address, it's related DAO, and permission level.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `createdAt`
+
+Block timestamp when the Shaman was added
+
+```graphql
+createdAt: String!
+```
+
+## `dao`
+
+Related DAO
+
+```graphql
+dao: Dao!
+```
+
+## `shamanAddress`
+
+Address of the Shaman
+
+```graphql
+shamanAddress: Bytes!
+```
+
+## `permissions`
+
+Permission level of the Shaman (0-7)
+
+```graphql
+permissions: BigInt!
+```

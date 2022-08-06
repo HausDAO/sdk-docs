@@ -1,0 +1,37 @@
+# Record
+
+##### Record
+
+This is what we call the DAO database. We use [Poster.sol](https://github.com/onPoster/contract/blob/main/contracts/Poster.sol) contracts to track. We have begun defining various schemas for other tables DAOs might want to manage. This represents off-chain data, not function calls to the contract. We make calls to the Poster contract to generate `json` that is standardized and mapped into our subgraph to maintain that data. This allows us to validate to ensure alignment our schema, ensure that the individual sending a transaction is a member of the DAO, and verify that the call is made through a DAO vote. This can be used for any type of table.
+
+```graphql
+id: ID!
+```
+
+```graphql
+createdAt: String!
+```
+
+```graphql
+createdBy: Bytes!
+```
+
+```graphql
+dao: Dao!
+```
+
+```graphql
+tag: Bytes!
+```
+
+```graphql
+table: String!
+```
+
+```graphql
+contentType: String!
+```
+
+```graphql
+content: String!
+```

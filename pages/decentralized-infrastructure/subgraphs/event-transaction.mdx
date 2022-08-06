@@ -1,0 +1,31 @@
+# EventTransaction
+
+This entity conveys ways to query the subgraph after transactions are submitted to see when they are completed or failed. All interactions with DAO contracts are recorded here.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `createdAt`
+
+Block timestamp of the transaction
+
+```graphql
+createdAt: String!
+```
+
+## `dao`
+
+Related DAO
+
+```graphql
+dao: Dao
+```
+
+```graphql
+daoAddress: Bytes
+```

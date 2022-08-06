@@ -1,0 +1,12 @@
+{
+  "overview": "Overview",
+  "dao": "DAO",
+  "proposal": "Proposal",
+  "vote": "Vote",
+  "record": "Record",
+  "member": "Member",
+  "ragequit": "RageQuit",
+  "shaman": "Shaman",
+  "event-transaction": "EventTransaction",
+  "token-lookup": "TokenLookup"
+}

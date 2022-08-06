@@ -1,0 +1,67 @@
+# Vote
+
+Every time a member votes the process gets attached to the proposal entity.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `txHash`
+
+Transaction hash of the vote
+
+```graphql
+txHash: Bytes!
+```
+
+## `createdAt`
+
+Block timestamp when the vote was submitted
+
+```graphql
+createdAt: String!
+```
+
+## `daoAddress`
+
+Contract address of the DAO related to this vote
+
+```graphql
+daoAddress: Bytes!
+```
+
+## `approved`
+
+indicates yes vote or no vote
+
+```graphql
+approved: Boolean!
+```
+
+## `balance`
+
+Shares balance of the voting member at the time of the vote
+
+```graphql
+balance: BigInt!
+```
+
+## `proposal`
+
+Related proposal
+
+```graphql
+proposal: Proposal!
+```
+
+## `member`
+
+Related voting member
+
+```graphql
+member: Member!
+```

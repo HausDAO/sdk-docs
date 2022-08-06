@@ -1,8 +1,11 @@
 # Helm Charts
 
-## Overview
+[Helm Charts](https://helm.sh/) are a packaging tool for [Kubernetes](https://kubernetes.io/). Kubernetes is an orchestration tool for containers. It allows the definition of the infrastructure set-up in a configuration file. Helm contains our definitions and allows for specific configurations to replicate and customize infrastructure settings.
 
-Helm Charts are a packaging tool for Kubernetes, which is an orchestration tool for containers that allows people to define (in a config file) what kind of infrastructure they want to setup. This allows users to interpolate different values, contains our infrastructural definitions, and facillitates implementing custom configurations to stand up our DAOhaus infrastructure.
+To see the most recent infrastructure configuration view [`Chart.yaml`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/infra-chart/daohaus/Chart.yaml) in the `daohaus-monorepo`.
 
-- [Learn about Helm](https://devops.stackexchange.com/questions/13379/use-one-helm-chart-for-all-microservices#)
-- Organize into subcharts, dependencies, into templates which eventually becomes one master chart
+To setup the infrastructure you need to run the `deployStaging` Helm install command in [`project.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/infra-chart/daohaus/project.json)
+
+```json
+helm upgrade -f ./daohaus/values.yaml test ./daohaus
+```
