@@ -1,7 +1,9 @@
 {
   "index": "Introduction",
-  "home": "Home",
+  "getting-started": "Getting Started",
+  "daohaus-manifesto": "DAOhaus Manifesto",
   "sdk": "Software Development Kit",
   "decentralized-infrastructure": "Decentralized Infrastructure",
-  "examples": "Examples"
+  "examples": "Examples",
+  "community-links": "Community Links"
 }
