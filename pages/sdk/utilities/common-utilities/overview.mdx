@@ -1,0 +1,27 @@
+# Common Utilities
+
+Our common utilities are helper utilities, constants, different types, and other data that will be used across all of the different libraries. The blockchain stores time as seconds for each epoch. You might need a quick little function to display this in your app.
+
+We divide our common utilities into Constants, Types, and Utils.
+
+### Constants
+
+Anything that never changes, including tags, proposal statuses, chain data and ids, etc.
+
+### Types
+
+Common types used across all the apps.
+
+### Utils
+
+These are functions you can pull into your app to accomplish all kinds of common actions, such as:
+
+- Dates: timesync
+- Encording: data for proposals
+- Explorer: generates a link to the block explorer to verify the correct network
+- Formatting: truncating or adding addresses
+- General: calcultating voting power, the present moment in seconds
+- Index: how we organize files so you can easily import them into your app
+- Object: helpful JavaScript to create a new object off of another object
+- Typeguards: helpers to check if something is an array, a number, a string. Often used for validation on forms, etc.
+- Units: helpful for converting from one type of number to another, such as gwei into ETH
