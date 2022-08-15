@@ -23,7 +23,6 @@ Our component library includes the following, and each of the components has an 
 - **Types**
   - Common types used throughout the component library.
 
-
 ## Installation
 
 TBD (video walkthrough?)
@@ -48,7 +47,7 @@ ReactDOM.render(
     </HausThemeProvider>
   </StrictMode>,
   document.getElementById('root')
-);
+)
 ```
 
 Eventually this will support multiple themes that can be passed into the `<HausThemeProvider/>` but for now it only includes the default theme. Once this is imported, your app will inherit all of the default theme styles and tokens.
@@ -60,7 +59,7 @@ Individual components are exported as named exports from the `@daohaus/ui` packa
 ```jsx
 // Component.tsx
 
-import { Button } from '@daohaus/ui';
+import { Button } from '@daohaus/ui'
 ```
 
 We have a Storybook with stories for each exported component showcasing the props and variants. All of our components are written with TypeScript so you'll be able to have TypeScript "hints" in your code editor when using them.
@@ -70,4 +69,3 @@ We have a Storybook with stories for each exported component showcasing the prop
 ![folder-structure](https://i.imgur.com/QPCf7nz.png)
 
 👆 this is just a placeholder from [Component Library Folder Structure](https://github.com/HausDAO/daohaus-monorepo/issues/43)
-
