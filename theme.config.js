@@ -4,12 +4,7 @@ export default {
   titleSuffix: 'HausDAO',
   logo: (
     <>
-      <span className="mr-2 font-extrabold hidden md:inline">
-        🏰 Haus SDK 🏰
-      </span>
-      <span className="text-gray-600 font-normal hidden md:inline">
-        DAOhaus Toolbox
-      </span>
+      <span className="mr-2 font-extrabold hidden md:inline">DAO Toolbox</span>
     </>
   ),
   head: (
@@ -19,13 +14,16 @@ export default {
       <meta name="theme-color" content="#ffffff" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Language" content="en" />
-      <meta name="description" content="DAOhaus Toolbox" />
-      <meta name="og:description" content="DAOhaus Toolbox" />
+      <meta name="description" content="DAO Toolbox" />
+      <meta name="og:description" content="DAO Toolbox" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content="/daohaus-logo-big.png" />
-      <meta name="twitter:site:domain" content="nextra.vercel.app" />
-      <meta name="twitter:url" content="https://nextra.vercel.app" />
-      <meta name="og:title" content="DAOhaus Toolbox" />
+      <meta
+        name="twitter:site:domain"
+        content="staging-haus-toolbox.vercel.app"
+      />
+      <meta name="twitter:url" content="https://twitter.com/nowdaoit" />
+      <meta name="og:title" content="DAO Toolbox" />
       <meta name="og:image" content="/daohaus-logo-big.png" />
       <meta name="apple-mobile-web-app-title" content="HausDAO" />
       <link
@@ -66,5 +64,5 @@ export default {
   footer: true,
   footerEditLink: 'Edit this page on GitHub',
   footerText: <>MIT {new Date().getFullYear()} © HausDAO.</>,
-  unstable_faviconGlyph: '🏰',
+  unstable_faviconGlyph: '🧰',
 }
