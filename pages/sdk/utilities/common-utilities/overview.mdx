@@ -1,27 +1,31 @@
 # Common Utilities
 
-Our common utilities are helper utilities, constants, different types, and other data that will be used across all of the different libraries. The blockchain stores time as seconds for each epoch. You might need a quick little function to display this in your app.
+Common utilities are helpers used throughout the different libraries. They are divided into Constants, Content, Types and Utils.
 
-We divide our common utilities into Constants, Types, and Utils.
+## Constants
 
-### Constants
+Constants are the variables that never change. They include [`chainData`](./constants/chain-data), [`contracts`](./constants/contracts), [`endpoints`](./constants/endpoints), [`posterTags`](./constants/poster-tags) and [`proposals`](./constants/proposals).
 
-Anything that never changes, including tags, proposal statuses, chain data and ids, etc.
+## Content
 
-### Types
+Content includes the information contained in the app's [`form`](./content/form) and the tooltip [`info`](./content/info).
 
-Common types used across all the apps.
+## Types
 
-### Utils
+Common types are used across all apps. They include [`contract`](./types/contract), [`general`](./types/general), [`keychains`](./types/keychains), [`legoTypes`](./types/lego-types) and [`react`](./types/react).
 
-These are functions you can pull into your app to accomplish all kinds of common actions, such as:
+## Utils
 
-- Dates: timesync
-- Encording: data for proposals
-- Explorer: generates a link to the block explorer to verify the correct network
-- Formatting: truncating or adding addresses
-- General: calcultating voting power, the present moment in seconds
-- Index: how we organize files so you can easily import them into your app
-- Object: helpful JavaScript to create a new object off of another object
-- Typeguards: helpers to check if something is an array, a number, a string. Often used for validation on forms, etc.
-- Units: helpful for converting from one type of number to another, such as gwei into ETH
+Utilities are functions you can pull into your app to accomplish all kinds of common actions, such as:
+
+- [`dates`](./utils/dates) allow you to format dates and periods
+- [`encoding`](./utils/encoding) helps encode values and functions and get a nonce
+- [`explorer`](./utils/explorer) allows you to generate links to block explorers
+- [`formatting`](./utils/formatting) help you trunctate addresses, set character limits, handle plural nouns, and convert from Wei
+- [`general`](./utils/general) allows you to calculate voting power percentage and convert to now in seconds
+- [`gnosis`](./utils/gnosis) helps you generate a link to a Gnosis safe
+- [`object`](./utils/object) allows you to omit an object and and fields
+- [`time`](./utils/time) helps you with a conversion object and functions to convert to seconds and format periods
+- [`typeguards`](./utils/typeguards) allows you to validate types with functions
+- [`units`](./utils/units) helps you with functions, types, interfaces and contstants
+- [`validation`](./utils/validation) allows you to validate fields and error messages
