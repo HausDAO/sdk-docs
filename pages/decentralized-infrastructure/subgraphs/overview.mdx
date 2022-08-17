@@ -6,11 +6,11 @@ Contracts on Ethereum have events that can be written into your contracts. When 
 - [DAOhaus Goerli Subgraph](https://thegraph.com/hosted-service/subgraph/hausdao/daohaus-v3-goerli) Playground
 - [The Graph Docs](https://thegraph.com/docs/en/)
 
-Our Subgraph references the [Moloch v3](../contracts) which is a combination of multiple contacts. The core DAO for governance, the Gnosis Safe for the treasury, the loot ERC-20 and the shares ERC-20 so we can know when tokens are minted, transferred or burned. We can track who the holders are and what the balances are.
+Our subgraph references the [Moloch v3](../contracts) which is a combination of multiple contacts. The core DAO for governance, the Gnosis Safe for the treasury, the loot ERC-20 and the shares ERC-20 so we can know when tokens are minted, transferred or burned. We can track who the holders are and what the balances are.
 
-We have deployed a factory contract for deploying DAO contracts on Moloch v3 and our Subgraph listens to this factory to create templates for each DAO launched. We then listen to each DAO contract for the events they fire off. That data is combined into the subgraph entities that are easy to query. and give us the data needed for our interfaces.
+We have deployed a factory contract for deploying DAO contracts on Moloch v3 and our subgraph listens to this factory to create templates for each DAO launched. We then listen to each DAO contract for the events they fire off. That data is combined into the subgraph entities that are easy to query. and give us the data needed for our interfaces.
 
-Our Subgraph schema is composed of the following entities:
+Our subgraph schema is composed of the following entities:
 
 - [DAO](dao)
 - [Proposal](proposal)
