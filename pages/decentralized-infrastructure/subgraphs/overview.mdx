@@ -2,14 +2,15 @@
 
 Contracts on Ethereum have events that can be written into your contracts. When there is a state change, these events fire off in the contracts. The Graph provides a framework for listening to those events, allowing you to map, rewrite, and transform that data into really sensible entities and databases representing the current state of your contracts.
 
-- [The Graph Docs](https://thegraph.com/docs/en/)
+- [API Endpoint](https://api.thegraph.com/subgraphs/name/hausdao/daohaus-v3-goerli/graphql)
 - [DAOhaus Goerli Subgraph](https://thegraph.com/hosted-service/subgraph/hausdao/daohaus-v3-goerli) Playground
+- [The Graph Docs](https://thegraph.com/docs/en/)
 
-Our Subgraph references the [Moloch v3 contracts](../contracts). We have deployed a factory contract for deploying DAO contracts on Moloch v3 and our Subgraph listens to this factory to create templates for each DAO launched. We then listen to each DAO contract for the events they fire off.
+Our subgraph references the [Moloch v3](../contracts) which is a combination of multiple contacts. The core DAO for governance, the Gnosis Safe for the treasury, the loot ERC-20 and the shares ERC-20 so we can know when tokens are minted, transferred or burned. We can track who the holders are and what the balances are.
 
-The core Moloch v3 contract contains governance and proposal variables. There is also a Gnosis Safe contract comprising the DAO treasury, which we do not listen to (although there may be use cases in the future). A Loot and Share ERC-20 contract is generated and registered in our Subgraph so we can track when tokens are transferred, created, minted, or burned to display holders and token balances.
+We have deployed a factory contract for deploying DAO contracts on Moloch v3 and our subgraph listens to this factory to create templates for each DAO launched. We then listen to each DAO contract for the events they fire off. That data is combined into the subgraph entities that are easy to query. and give us the data needed for our interfaces.
 
-Our Subgraph is composed of the following entities:
+Our subgraph schema is composed of the following entities:
 
 - [DAO](dao)
 - [Proposal](proposal)
@@ -20,3 +21,7 @@ Our Subgraph is composed of the following entities:
 - [Shaman](shaman)
 - [EventTransaction](event-transaction)
 - [TokenLookup](token-lookup)
+
+The [DAOhaus Goerli Subgraph](https://thegraph.com/hosted-service/subgraph/hausdao/daohaus-v3-goerli) Playground allows you to test different queries. This is a great way to learn how to find data in the subgraph. To learn more about querying checkout [Querying The Graph](https://thegraph.com/docs/en/querying/querying-the-graph/)
+
+The DAOhaus subgraph should be stable and will not change often. If your application is integrating with other contracts those contracts may already have subgraphs you are bringing into your app. If you are writing new contracts you may want to create your own subgraphs to query within your app and enhance the data that you are getting.
