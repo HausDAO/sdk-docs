@@ -1,0 +1,42 @@
+# [`dao-data`](https://www.npmjs.com/package/@daohaus/dao-data)
+
+The DAO Data library wraps the [subgraphs](../../decentralized-infrastructure/subgraphs/overview), queries to the [Ceramic node](../../decentralized-infrastructure/ceramic-node) and potentially other sources of data. It converts these data sources into objects applications can use. We have tried to make querying more simple than directly accessing the subgraph via GraphQL.
+
+## Installation
+
+The package name for importing is [`@daohaus/data`](https://www.npmjs.com/package/@daohaus/dao-data).
+
+```unix
+npm i @daohaus/dao-data
+```
+
+## Usage
+
+The SDK provides a `Haus` class that you'll need to import into your component and instantiate it:
+
+```jsx
+// App.tsx
+
+import { Haus } from '@daohaus/dao-data'
+
+const haus = Haus.create()
+```
+
+Once this is imported you can access the SDK methods that are available. For example, to use the functionality related to user profiles, you can use the following:
+
+```jsx
+// App.tsx
+
+const profile = await haus.profile.get(address)
+
+const profileDaoMemberships = await haus.profile.listDaosByMember({
+  networkId: ['0x5'],
+})
+```
+
+You will want to wrap this in a `try/catch` block to handle any errors that may occur like you would with other asynchronous calls.
+
+## Features
+
+- [Read DAO Data](./read-dao-data)
+- [Write DAO Data](./write-dao-data)
