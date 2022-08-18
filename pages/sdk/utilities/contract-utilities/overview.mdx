@@ -1,0 +1,29 @@
+# Contract Utilities
+
+Contract utilities wrap the contracts and provides addresses and ABIs for the deployed contracts. ABIs are the `.json` map of a contract telling us what functions it has and what you can read from it. Contract utilities also have TypeScript wrapped versions of the contract that you can pull into JavaScript applications to make transactions with the contracts.
+
+These utilities are cross-correlated to [Write DAO Data](../../data/write-dao-data). They will help you make function calls and write data to the contracts.
+
+## [`contract`](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/contract-utilities/src/contract)
+
+The Baal contract services are helpers that serve the deployed contract addresses being used by your network. For example, retrieving the Moloch v3 contract address for the Goerli network.
+
+- [`BaalContract.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/BaalContract.ts) creates a class for `BaalContract`
+- [`BaalSummoner.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/BaalSummoner.ts) creates a class for `BaalSummonerContract`
+- [`contracts.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/contracts.ts) exports functions to `getContractAddressesForChain` and `getContractsForChain`
+- [`types.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/types.ts) exports interfaces for `Contracts` and `ContractsAndFactories` and types for `ContractConfig`
+
+This library wraps your contracts providing type protection for the arguments you need. This will help you make contract calls from your app. This is one way that our SDK facillitates writing contract data easier. It is combined with Transaction Builder in the form of a React application.
+
+## [`external-abis`](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/contract-utilities/src/external-abis)
+
+A way to store the current ABIs so apps can retrieve them. This is very useful in Web3 development. When you are instantiating contracts with various libraries you need the ABIs so the library knows what to do with them.
+
+- [`gnosisMultisend.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/external-abis/gnosisMultisend.json)
+- [`gnosisProxy.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/external-abis/gnosisProxy.json)
+- [`superFluidProxy.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/external-abis/superFluidProxy.json)
+
+## [`test`](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/contract-utilities/src/test)
+
+- [`addresses.spec.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/test/addresses.spec.ts)
+- [`baalContract.spec.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/test/baalContract.spec.ts)
