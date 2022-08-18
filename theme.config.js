@@ -63,6 +63,13 @@ export default {
   nextLinks: true,
   footer: true,
   footerEditLink: 'Edit this page on GitHub',
-  footerText: <>MIT {new Date().getFullYear()} © HausDAO.</>,
+  footerText: (
+    <>
+      Built with ❤️ by{' '}
+      <a href="https://app.daohaus.club/dao/0x64/0xef3d8c4fbb1860fceab16595db7e650cd5ad51c1">
+        Warcamp
+      </a>
+    </>
+  ),
   unstable_faviconGlyph: '🧰',
 }
