@@ -1,5 +1,14 @@
 # Introduction
 
-The primary motivation of the DAOhaus development kit is to provide a set of tools that make it wasy to read and write the data from our decentralized infrastructure. The contracts write directly to the blockchain, with subgraphs on top of the contracts that make the data more query-able, and a set of additional layers to the infrastructure like Ceramic Nodes that hold data related to addresses, Jobs, and Helm Charts which both cache data from the blockchain to make it easy for our applications to read. Our SDK provides a set of utilities to pull data from this infrastructure and make it beautifully accessible in your applications.
+For Web3 developers who are frustrated building a complicated stack, DAO Toolbox is a set of resources allowing you to focus on creating value for your community. Unlike spending months wiring up the backend, we have assembled a [Decentralized Infrastructure](./decentralized-infrastructure/overview) and [Software Development Kit](./sdk/overview) to boostrap DAO applications.
 
-![](https://i.imgur.com/ZFUDkRh.jpg)
+- [Software Development Kit](./sdk/overview)
+- [Decentralized Infrastructure](./decentralized-infrastructure/overview)
+
+Whether you are building a stand alone project or extending [DAOhaus](https://daohaus.club/) functionality, DAO Toolbox makes it easier to read and write DAO data. We are hoping our years of experience figuring this stuff out saves you time and helps you prioiritize what matters.
+
+The [contracts](./decentralized-infrastructure/contracts) write directly to the blockchain, with [subgraphs](./decentralized-infrastructure/subgraphs) making the data easier to query. We package the infrastruture with [Helm Charts](./decentralized-infrastructure/helm-charts) encouraging recreation and customization of the entire [DAOhaus App](https://app.daohaus.club/) experience. On-chain and subgraph data is processed and transformed into formats that are easier to consume with [jobs](./decentralized-infrastructure/jobs). Data output is stored in decentralized [Ceramic nodes](./decentralized-infrastructure/ceramic-node).
+
+We hope this set of utilities pulling from that base layer makes it more accessible for applications built on top.
+
+![haus](https://i.imgur.com/ZFUDkRh.jpg)
