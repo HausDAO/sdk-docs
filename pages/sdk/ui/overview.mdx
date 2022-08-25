@@ -31,7 +31,7 @@ ReactDOM.render(
 )
 ```
 
-`HausThemeProvider` can wrap the entire application and provide other components access to data. It changes your base configuration defaults. Although these theme variables can be changed and will cascade to other elements you may not want to use this with an existing design system.
+`HausThemeProvider` can wrap the entire application and provide other components access to data. It changes your base configuration defaults. Although these theme variables [can be changed](#styleddts) and will cascade to other elements you may not want to use this with an existing design system.
 
 ### Importing Components
 
@@ -58,11 +58,15 @@ For more details please checkout the [Component Library](component-library) page
 
 ### [hooks](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/ui/src/hooks)
 
+Hooks allow us to abstract React functionality. They refactor general-purpose code into reusable functions. Each hook requires data sent in be shaped a certain way. The `useMediaQuery` hook helps support responsive design.
+
 - `useCopyToClipboard.tsx`
 - `useMediaQuery.tsx`
 - `useToast.tsx`
 
 ### [theme](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/ui/src/theme)
+
+Our `theme.ts` provides the base styles for components. In it we leverage the Radix [open-source color system](https://www.radix-ui.com/colors). `<HausThemeContext>` sets these variables for priamry, secondary, tertiary, neutral, and utility colors in state.
 
 - atoms
 - component
@@ -74,6 +78,8 @@ For more details please checkout the [Component Library](component-library) page
 
 ### [types](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/ui/src/types)
 
+These are common types used throughout the component library.
+
 - `dialog.types.ts`
 - `formAndField.ts`
 - `theming.ts`
@@ -81,6 +87,6 @@ For more details please checkout the [Component Library](component-library) page
 
 ### [`styled.d.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/ui/src/styled.d.ts)
 
-Contains the variables you can change in your theme. These updates are currently done manually. Once the patterns are fully established we will generate these automatically.
+This file contains the variables you can change in your theme. These updates are currently done manually. Once the patterns are fully established we will generate these automatically.
 
-Eventually this will support multiple themes that can be passed into the `<HausThemeProvider/>`. For now it only includes the default theme. Once this is imported, your app will inherit the default styles and tokens.
+Eventually this will support multiple themes that can be passed into the `<HausThemeProvider />`. For now it only includes the default theme. Once this is imported, your app will inherit the default styles and tokens.
