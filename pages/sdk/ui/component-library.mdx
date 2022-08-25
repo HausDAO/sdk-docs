@@ -1,73 +1,68 @@
-# Component Library (UI)
+# Component Library
 
-**Component Library (UI)** is a set of React components with TypeScript leveraging [Radix UI](https://www.radix-ui.com/) primitives. This library roughly follows [Atomic Design principles](https://bradfrost.com/blog/post/atomic-web-design/), and are intended to be composed together to build application UI.
+Component Library is highly opinionated. It mocks up the elements of the DAOhaus user interface and is scoped for anyone wanting to build an app that resembles this platform. The library is designed to enable building apps and features fast. Currently, customization is limited to those building a [React](https://reactjs.org/) app with DAOhaus styles.
 
-This library includes a [Storybook](https://storybook.daohaus.fun/) as well and is intended for use by the larger DAOhaus community. Since we "dogfood" our own package development we're continually adding to this library as we surface new components.
+Inspired by Brad Frost's [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) system of components we wanted to design something declarative, accessible, and simple. These elements are intended to be composed to build application user interfaces.
 
-## Components Overview
+We leverage React, [styled-components](https://styled-components.com/) and the Radix [open-source color system](https://www.radix-ui.com/colors). Although these are customizable, if you have specific style needs, framework requirements or an existing design system this may not be for you.
 
-Our component library includes the following, and each of the components has an associated Story for more deatiled usage.
+This library includes a [Storybook](https://storybook.daohaus.fun/) and is intended for use by the DAOhaus community. Since we "dogfood" our own package development we're continually adding to this library as new components are surfaced.
 
-- **Animations**: Our animations commonly used throughout the app.
-- **Components**: We roughly follow Atomic Design principles so our components are organized as _Atoms_, _Molecules_, and _Organisms_
-  - **Atoms**
-    - These are the smallest components that are used to build up a larger component. Each Atom is typically a single UI element such as a `<Label>` component.
-  - **Molecules**
-    - Molecules are composed of Atoms and other Molecules. Molecules are typically used to build up a larger component. An example is an `<Toast/>` component as it composes other Atoms.
-  - **Organisms**
-    - These are the largest components. As our component library is largely comprised of building blocks intended to be composed together, we currently have fewer at this level than the others as most Organisms exist in the individual apps.
-- **Hooks**
-  - Hooks are React Hooks that are used to provide additional functionality to our components. For example, we have a `useMediaQuery` hook that supports responsive design.
-- **Theme**
-  - Our `theme` and base styles for several components. We have a `HausThemeContext` that composes and scaffolds core theme elements.
-- **Types**
-  - Common types used throughout the component library.
+## Levels
 
+Our components are organized as _Atoms_, _Molecules_, _Organisms_ and _Layouts_. This pattern give you the ability to install the entire package or the flexibility to pick-and-choose what you want. Although we bundle a lot together we provide the primitives when possible. If you do not like the way a molecule is composed you can rebuild it however you want. Each of the components has an associated [story](https://storybook.daohaus.fun/) for more detailed usage.
 
-## Installation
+### Atoms
 
-TBD (video walkthrough?)
+Atoms are the most primitive aspects of your user interface. Each atom is typically a single UI element such as a [`<Label>`](https://storybook.daohaus.fun/?path=/docs/atoms-label--base-label). These base-level elements are used to build up a larger components composing molecules and organisms.
 
-## Usage
+- `<Avatar />`
+- `<Badge />`
+- `<Button>`
+- `<Card>`
+- `<Checkbox />`
+- `<FileInput />`
+- `<HelperText>`
+- `<Icon>`
+- `<Input />`
+- `<Label>`
+- `<Link />`
+- `<Radio />`
+- `<Select />`
+- `<Switch />`
+- `<Tag>`
+- `<TextArea />`
+- `<Tooltip />`
+- `Typography`
 
-DAOhaus UI provides a theme Context Provider as well as a set of UI components that can be imported and used to build app UI.Start by importing the `HausThemeProvider` from the `@daohaus/ui` package at your app's `root` component, such as `main.tsx`:
+### Molecules
 
-### HausThemeProvider Context Provider
+Molecules combine atoms and are typically used to build up a larger components. An example is the [`<Toast />`](https://storybook.daohaus.fun/?path=/docs/molecules-toast--atom-toast) component which composes various atoms into multiple variations.
 
-```jsx
-// main.tsx
+- `<AddressDisplay />`
+- `Form`
+- `<DataIndicator />`
+- `<Dropdown>`
+- `<ProfileAvatar />`
+- `<Toast />`
 
-ReactDOM.render(
-  <StrictMode>
-    <HausThemeProvider>
-      <HashRouter>
-        <HausConnectProvider>
-          <Routes />
-        </HausConnectProvider>
-      </HashRouter>
-    </HausThemeProvider>
-  </StrictMode>,
-  document.getElementById('root')
-);
-```
+### Organisms
 
-Eventually this will support multiple themes that can be passed into the `<HausThemeProvider/>` but for now it only includes the default theme. Once this is imported, your app will inherit all of the default theme styles and tokens.
+Organisms incorporate both atoms and molecules into more complex entities. [`<NavigationTabs />`](https://storybook.daohaus.fun/?path=/docs/organisms-navigationtabs--navigation-tabs-example) is an example of these larger components.
 
-### Importing Components
+- `<AppSwitcher />`
+- `<MemberCard />`
+- `<NavigationTabs />`
 
-Individual components are exported as named exports from the `@daohaus/ui` package. You can use them in your app by importing them into a component:
+### Layouts
 
-```jsx
-// Component.tsx
+Layouts allow you to organize the views in your app. They provide the foundation for you to add other component on. For example, [`<BiColumnLayout />`](https://storybook.daohaus.fun/?path=/docs/layouts-bicolumnlayout--base-bi-column-layout) seperates a view into left and right columns.
 
-import { Button } from '@daohaus/ui';
-```
+- `<BiColumnLayout />`
+- `<FormLayout>`
+- `<OuterLayout>`
+- `<SingleColumLayout />`
 
-We have a Storybook with stories for each exported component showcasing the props and variants. All of our components are written with TypeScript so you'll be able to have TypeScript "hints" in your code editor when using them.
+## Recipes
 
-## Folder Structure
-
-![folder-structure](https://i.imgur.com/QPCf7nz.png)
-
-👆 this is just a placeholder from [Component Library Folder Structure](https://github.com/HausDAO/daohaus-monorepo/issues/43)
-
+- `DaoHausConnect`
