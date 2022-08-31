@@ -1,5 +1,19 @@
 # [`chainData.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/common-utilities/src/constants/chainData.ts)
 
+Imports the types `Keychain`, `NetworkType`, and `ValidNetwork` from the `../types` module. Also imports the `isString` function from the `../utils` module.
+
+The code then defines a constant called `VALID_NETWORKS`, which is an object containing various network IDs as properties.
+
+Next, the code defines a function called `isValidNetwork`, which takes two arguments. The first argument is a string, and the second is an optional `Keychain` object. The function returns true if the string is a valid network ID, and false if it is not.
+
+The code then defines a constant called `NETWORK_DATA`, which is a `Keychain` object containing information about various networks.
+
+The code then defines a function called `getNetwork`, which takes a `chainId` string as an argument. The function returns the `NetworkType` object for the specified `chainId`, or null if the `chainId` is not a valid network ID.
+
+The code then defines a function called `getNetworkName`, which takes a `chainId` string as an argument. The function returns the name of the network for the specified `chainId`.
+
+The code adds a keychain to a property in a network list.
+
 ## Constants
 
 - `VALID_NETWORKS`
