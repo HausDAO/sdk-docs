@@ -1,3 +1,4 @@
+import Script from 'next/script'
 export default {
   github: 'https://github.com/hausdao/sdk-docs',
   docsRepositoryBase: 'https://github.com/hausdao/sdk-docs/blob/main',
@@ -56,7 +57,7 @@ export default {
         href="/favicon-16x16.png"
       />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-      <script
+      <Script
         lang="javascript"
         dangerouslySetInnerHTML={{
           __html: `if (!window.localStorage.getItem("theme_default")) {
