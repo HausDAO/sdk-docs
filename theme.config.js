@@ -56,12 +56,25 @@ export default {
         href="/favicon-16x16.png"
       />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+      <script
+        lang="javascript"
+        dangerouslySetInnerHTML={{
+          __html: `if (!window.localStorage.getItem("theme_default")) {
+      window.localStorage.setItem("theme", "dark");
+      window.localStorage.setItem("theme_default", "dark");
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    }`,
+        }}
+      />
+      ;
     </>
   ),
   search: true,
   prevLinks: true,
   nextLinks: true,
   footer: true,
+
   footerEditLink: 'Edit this page on GitHub',
   footerText: (
     <>
