@@ -1,0 +1,41 @@
+# Record
+
+This is what we call the DAO database. We use [Poster.sol](https://github.com/onPoster/contract/blob/main/contracts/Poster.sol) contract to track events. We have begun defining various [schemas](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/dao-data/src/subgraph/json-schemas) for other tables DAOs might want to manage.
+
+[`dao-profile.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/dao-data/src/subgraph/json-schemas/dao-profile.json) represents data that is not ever on-chain. It is not stored in the contract. We make a call to the Poster contract and that event emits `.json`. We are standardizing that `.json` so we can listen to that Poster contract and see when somebody makes a call to it with a certain tag we can map that data into the subgraph. It also allows us to do validation inside the subgraph. We can make sure it matches the schema, we can make sure the person sending the transaction is a member of the DAO or are making the call through a DAO vote like in a ratification.
+
+Record can be used for any type of table. Right now we have the DAO profile data in a table. Soon we will have boosts and themes.
+
+Using the subgraph in this way has allowed us to replace centralized databases.
+
+```graphql
+id: ID!
+```
+
+```graphql
+createdAt: String!
+```
+
+```graphql
+createdBy: Bytes!
+```
+
+```graphql
+dao: Dao!
+```
+
+```graphql
+tag: Bytes!
+```
+
+```graphql
+table: String!
+```
+
+```graphql
+contentType: String!
+```
+
+```graphql
+content: String!
+```

@@ -1,0 +1,413 @@
+# Proposal
+
+Every time a proposal is made, we create a proposal entity that is related to the DAO. Most of the logic in our apps are related to proposal state changes. A proposal can be canceled, sponsored, be in voting period, grace period, pass, fail, processed. Each time these change we update the state of the proposal.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `createdAt`
+
+Block timestamp when the proposal was submitted
+
+```graphql
+createdAt: String!
+```
+
+## `createdBy`
+
+Address that submitted the proposal
+
+```graphql
+createdBy: Bytes!
+```
+
+## `dao`
+
+Related DAO entity
+
+```graphql
+dao: Dao!
+```
+
+## `proposalId`
+
+ID of the proposal
+
+```graphql
+proposalId: BigInt!
+```
+
+## `prevProposalId`
+
+ID of the previous proposal, set at sponsorship
+
+```graphql
+prevProposalId: BigInt!
+```
+
+## `txHash`
+
+Transaction hash of the proposal
+
+```graphql
+txHash: Bytes!
+```
+
+## `proposalDataHash`
+
+Hash of raw transaction data that will be executed if the proposal passes
+
+```graphql
+proposalDataHash: Bytes!
+```
+
+## `proposalData`
+
+Raw transaction data that will be executed if the proposal passes
+
+```graphql
+proposalData: Bytes!
+```
+
+## `votingPeriod`
+
+Duration of the voting period for this proposal in seconds
+
+```graphql
+votingPeriod: BigInt!
+```
+
+## `votingStarts`
+
+UNIX timestamp of when the voting period starts
+
+```graphql
+votingStarts: BigInt!
+```
+
+## `votingEnds`
+
+UNIX timestamp of when the voting period ends
+
+```graphql
+votingEnds: BigInt!
+```
+
+## `gracePeriod`
+
+Duration in seconds of the grace period for this proposal in seconds
+
+```graphql
+gracePeriod: BigInt!
+```
+
+## `votingPlusGraceDuration`
+
+Duration in seconds of the grace and voting periods for this proposal in seconds
+
+```graphql
+votingPlusGraceDuration: BigInt!
+```
+
+## `graceEnds`
+
+UNIX timestamp of when the grace period ends
+
+```graphql
+graceEnds: BigInt!
+```
+
+## `expiration`
+
+UNIX timestamp after which proposal should be considered invalid and skipped
+
+```graphql
+expiration: BigInt!
+```
+
+## `actionGasEstimate`
+
+Estimated gas needed to execute the proposal actions
+
+```graphql
+actionGasEstimate: BigInt!
+```
+
+## `details`
+
+String with human readable description of the proposal
+
+```graphql
+details: String!
+```
+
+## `selfSponsor`
+
+Indicates if the proposal was automatically sponsored
+
+```graphql
+selfSponsor: Boolean!
+```
+
+## `sponsored`
+
+Indicates if the proposal is sponsored
+
+```graphql
+sponsored: Boolean!
+```
+
+## `sponsor`
+
+Address that sponsored the proposal
+
+```graphql
+sponsor: Bytes
+```
+
+## `sponsorTxHash`
+
+Transaction hash of the proposal sponsor
+
+```graphql
+sponsorTxHash: Bytes
+```
+
+## `sponsorTxAt`
+
+UNIX timestamp of when the proposal was sponsored
+
+```graphql
+sponsorTxAt: BigInt
+```
+
+## `cancelled`
+
+Indicates if the proposal is cancelled
+
+```graphql
+cancelled: Boolean!
+```
+
+## `cancelledTxHash`
+
+Transaction hash of the cancelled proposal
+
+```graphql
+cancelledTxHash: Bytes
+```
+
+## `cancelledTxAt`
+
+UNIX timestamp of when the proposal was cancelled
+
+```graphql
+cancelledTxAt: BigInt
+```
+
+## `cancelledBy`
+
+Address that cancelled the proposal
+
+```graphql
+cancelledBy: Bytes
+```
+
+## `processed`
+
+Indicates if the proposal is processed
+
+```graphql
+processed: Boolean!
+```
+
+## `processTxHash`
+
+Transaction hash of processing the proposal
+
+```graphql
+processTxHash: Bytes
+```
+
+## `processTxAt`
+
+UNIX timestamp of when the proposal was processed
+
+```graphql
+processTxAt: BigInt
+```
+
+## `processedBy`
+
+Address that processed the proposal
+
+```graphql
+processedBy: Bytes
+```
+
+## `actionFailed`
+
+Process function was run and execution of proposal action failed
+
+```graphql
+actionFailed: Boolean!
+```
+
+## `passed`
+
+Indicates if the proposal passed
+
+```graphql
+passed: Boolean!
+```
+
+## `proposalOffering`
+
+Amount of native token provided as tribute when proposal was submitted
+
+```graphql
+proposalOffering: BigInt!
+```
+
+## `yesVotes`
+
+Number of current yes votes
+
+```graphql
+yesVotes: BigInt!
+```
+
+## `noVotes`
+
+Number of current no votes
+
+```graphql
+noVotes: BigInt!
+```
+
+## `yesBalance`
+
+Amount of current shares that have voted yes
+
+```graphql
+yesBalance: BigInt!
+```
+
+## `noBalance`
+
+Amount of current shares that have voted no
+
+```graphql
+noBalance: BigInt!
+```
+
+## `currentlyPassing`
+
+Proposal is currently passing quorum and has more yes votes than no votes
+
+```graphql
+currentlyPassing: Boolean!
+```
+
+## `maxTotalSharesAndLootAtYesVote`
+
+Highest share+loot count during any individual yes vote
+
+```graphql
+maxTotalSharesAndLootAtYesVote: BigInt!
+```
+
+The following tribute fields will only have values if the proposal was submitted through the trbute minion contract.
+
+## `tributeToken`
+
+Token address in tribute proposals
+
+```graphql
+tributeToken: Bytes
+```
+
+## `tributeOffered`
+
+Amount of tribute token offered
+
+```graphql
+tributeOffered: BigInt
+```
+
+## `tributeTokenSymbol`
+
+Symbol of the tribute token
+
+```graphql
+tributeTokenSymbol: String
+```
+
+## `tributeTokenDecimals`
+
+Decimal places of the tribute token
+
+```graphql
+tributeTokenDecimals: BigInt
+```
+
+## `tributeEscrowRecipient`
+
+Applicant submitting the tribute proposal
+
+```graphql
+tributeEscrowRecipient: Bytes
+```
+
+## `proposalType`
+
+Proposal type derived from the details field
+
+```graphql
+proposalType: String!
+```
+
+## `title`
+
+Proposal title derived from the details field
+
+```graphql
+title: String
+```
+
+## `description`
+
+Proposal description derived from the details field
+
+```graphql
+description: String
+```
+
+## `contentURI`
+
+Proposal content URI derived from the details field
+
+```graphql
+contentURI: String
+```
+
+## `contentURIType`
+
+Proposal content URI type (ipfs hash, url) derived from the details field
+
+```graphql
+contentURIType: String
+```
+
+## `votes`
+
+Votes scoped to this proposal
+
+```graphql
+votes: [Vote!]
+```

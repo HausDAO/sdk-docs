@@ -1,0 +1,92 @@
+# UI
+
+The [DAOhaus UI](https://www.npmjs.com/package/@daohaus/ui) package provides a theme Context Provider as well as a set of UI components that can be imported and used to build application user interfaces.
+
+## Installation
+
+```unix
+npm i @daohaus/ui
+```
+
+## Usage
+
+Start by importing the `HausThemeProvider` from the `@daohaus/ui` package at your app's `root` component, such as `main.tsx`:
+
+### HausThemeProvider Context Provider
+
+```jsx
+// main.tsx
+
+ReactDOM.render(
+  <StrictMode>
+    <HausThemeProvider>
+      <HashRouter>
+        <HausConnectProvider>
+          <Routes />
+        </HausConnectProvider>
+      </HashRouter>
+    </HausThemeProvider>
+  </StrictMode>,
+  document.getElementById('root')
+)
+```
+
+`HausThemeProvider` can wrap the entire application and provide other components access to data. It changes your base configuration defaults. Although these theme variables [can be changed](#styleddts) and will cascade to other elements you may not want to use this with an existing design system.
+
+### Importing Components
+
+Individual components are exported as named exports from the `@daohaus/ui` package. You can use them in your app by importing them into a component:
+
+```jsx
+// Component.tsx
+
+import { Button } from '@daohaus/ui'
+```
+
+We have a [Storybook](https://storybook.daohaus.fun/) with stories for each exported component showcasing the props and variants. All of our components are written with TypeScript so you'll be able to have TypeScript "hints" in your code editor when using them.
+
+## Structure
+
+### [components](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/ui/src/components)
+
+For more details please checkout the [Component Library](component-library) page.
+
+- atoms
+- layouts
+- molecules
+- organisms
+
+### [hooks](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/ui/src/hooks)
+
+Hooks allow us to abstract React functionality. They refactor general-purpose code into reusable functions. Each hook requires data sent in be shaped a certain way. The `useMediaQuery` hook helps support responsive design.
+
+- `useCopyToClipboard.tsx`
+- `useMediaQuery.tsx`
+- `useToast.tsx`
+
+### [theme](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/ui/src/theme)
+
+Our `theme.ts` provides the base styles for components. In it we leverage the Radix [open-source color system](https://www.radix-ui.com/colors). `<HausThemeContext>` sets these variables for priamry, secondary, tertiary, neutral, and utility colors in state.
+
+- atoms
+- component
+- global
+- molecules
+- organisms
+- `HausThemeContext.tsx`
+- `theme.ts`
+
+### [types](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/ui/src/types)
+
+These are common types used throughout the component library.
+
+- `dialog.types.ts`
+- `formAndField.ts`
+- `theming.ts`
+- `toast.types.ts`
+
+### [`styled.d.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/ui/src/styled.d.ts)
+
+This file contains the variables you can change in your theme. These updates are currently done manually. Once the patterns are fully established we will generate these automatically.
+
+Eventually this will support multiple themes that can be passed into the `<HausThemeProvider />`. For now it only includes the default theme. Once this is imported, your app will inherit the default styles and tokens.

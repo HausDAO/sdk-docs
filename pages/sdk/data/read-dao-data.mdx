@@ -1,0 +1,170 @@
+# Read DAO Data
+
+Read DAO Data includes functions like find DAO that get passed a DAO address. List Members provides the members related to a specific DAO address. There is also sorting, filtering and pagination.
+
+## [`Profile.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/dao-data/src/Profile.ts)
+
+Profile includes all data related to a single address. This could include an ENS, avatar or other information. You can also request all DAOs the address is a member of.
+
+The SDK provides a `profile` method that includes functionality related to profiles. This includes interacting with [Lens Protocol](https://lens.xyz/) to get a user's profile. We have a series of fallbacks in place if a user doesn't have a basic profile set.
+
+To get ENS names with the profile include a mainnet rpc endpoint in the init options:
+
+```js
+const haus = Haus.create({ providers: { '0x0': 'https://somerpc.com' } })
+
+const profile = await haus.profile.get('0x0')
+// console.log(profile)
+// {
+//   address: '0x0',
+//   ens: 'woodrowwilson.eth',
+//   image: 'ifshash',
+//   name: 'woody',
+//   description: '28th president of the united states of america',
+//   emoji: "🦅"
+// }
+
+const profileDaoMemberships = await haus.profile.listDaosByMember({
+  memberAddress: '0x0',
+  networkId: ['0x5'],
+})
+// console.log(profileDaoMemberships)
+// [{
+//   address: '0x0somedaocontractaddress',
+//   name: 'potusDAO',
+//   ... more dao data
+// }]
+```
+
+## [`Query.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/dao-data/src/Query.ts)
+
+The query class is more generic. This is a flexible way to query most of the entities in the [subgraph](../../decentralized-infrastructure/subgraphs/overview). Using this class prevents you from having to write GraphQL.
+
+The query module has methods for finding lists of DAOs, proposals and members. It also allows you to find a DAO, proposal or member. These queries are scoped to a specific network. Currently profile is the only cross-network query.
+
+### List Queries
+
+```js
+const daos = await haus.query.listDaos({
+  networkId: '0x5',
+});
+
+const proposals = await haus.query.listProposals({
+  networkId: '0x5',
+  filter: { dao: '0x0' },
+});
+
+const members = await haus.query.listMembers({
+  networkId: '0x5',
+  filter: { dao: '0x0' },
+  ordering: {
+    orderBy: 'shares'
+    orderDirection: 'asc'
+  },
+  pagination: {
+    pageSize: 4,
+    offset: 0,
+  }
+});
+```
+
+### Find Queries
+
+```js
+const dao = await haus.query.findDao({
+  networkId: '0x5',
+  dao: '0x0',
+  includeTokens: true,
+})
+
+const proposal = await query.findProposal({
+  networkId: '0x5',
+  dao: '0x0',
+  proposalId: '3',
+})
+
+const member = await query.findMember({
+  networkId: '0x5',
+  dao: '0x0',
+  memberAddress: '0x123',
+})
+```
+
+### Filters
+
+List queries allow for you to filter results.
+
+Every field in the [subgraph](../../decentralized-infrastructure/subgraphs/overview) schema can be used as a filter. This enables you to create complex queries. The Graph docs contain examples on [filtering](https://thegraph.com/docs/en/querying/graphql-api/#filtering).
+
+Provide any query the graph supports on fields within the entity you are querying.
+
+#### Example
+
+```js
+{
+  createdAt_gte: '1656693140'
+}
+
+{
+  createdAt_lt: '1656693140',
+  totalShares_gt: '10000000000000000000'
+}
+```
+
+### Ordering
+
+You can also select which fields to order results by. Provide a field to order by and the order direction (asc or desc).
+
+#### Example
+
+```js
+{
+  orderBy: 'createdAt',
+  orderDirection: 'asc'
+}
+
+{
+  totalShares: '1656693140',
+  orderDirection: 'desc'
+}
+```
+
+### Pagination
+
+Pagination defaults to returning the first 100 results and provides the query required to get to the next page.
+
+The SDK supports offest and cursor pagination. Offset pagination will return query options for fetching the next page and previous page. Cursor pagination is better for larger data sets, defaults sort to the ID field and provides query options for fetching the next page.
+
+```js
+{
+  pageSize: '20',
+  offset: '0'
+}
+
+{
+  pageSize: '2000',
+  lastId: '0'
+}
+```
+
+## utils
+
+### [`proposalFilters.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/dao-data/src/utils/proposalFilters.ts)
+
+Proposal filters are functions that help you build a query for making calls to filter by proposal status. Proposal status is not tracked in the subgraph because it is not all based on events. Some states are based on time. These filters provide complex queries allowing you to see the state of the proposals based on time.
+
+### [`proposalsStatus.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/dao-data/src/utils/proposalsStatus.ts)
+
+Proposal Status helpers take a proposal and checks what status it is currently in.
+
+- `isProposalUnsponsored`
+- `isProposalCancelled`
+- `isProposalPassed`
+- `isProposalActionFailed`
+- `isProposalInVoting`
+- `isProposalInGrace`
+- `isProposalExpired`
+- `proposalNeedsProcessing`
+- `isProposalFailed`
+- `passedQuorum`
+- `getProposalStatus`

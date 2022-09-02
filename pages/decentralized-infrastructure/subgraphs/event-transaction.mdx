@@ -1,0 +1,31 @@
+# EventTransaction
+
+EventTransactions are ways you can query the subgraph after a transaction is fired to see when it is completed. This entity is used heavily by [TransactionBuilder](../../sdk/features/transaction-builder). Anytime anybody does anything with the DAO contracts the transaction is recorded.
+
+## `id`
+
+Unique identifier and primary key of the entity
+
+```graphql
+id: ID!
+```
+
+## `createdAt`
+
+Block timestamp of the transaction
+
+```graphql
+createdAt: String!
+```
+
+## `dao`
+
+Related DAO
+
+```graphql
+dao: Dao
+```
+
+```graphql
+daoAddress: Bytes
+```

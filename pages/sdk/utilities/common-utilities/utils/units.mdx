@@ -1,0 +1,38 @@
+# [`units.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/common-utilities/src/utils/units.ts)
+
+The `toBaseUnits` and `toWholeUnits`, both take an amount and decimals (defaulting to 18) as arguments. `toBaseUnits` parses the amount into units and converts it to a string. `toWholeUnits` formats the amount into units and also converts it to a string.
+
+`NumericalFormat` defines a type that can be one of seven different string values.
+
+`FormatGeneratorParams` defines an interface for an object that has three properties: `value`, `type` and `decimals`. The value property is a number, the type property is a value of the `NumericalFormat` type or a string, and the decimals property is a number.
+
+The `generateNumeral` function takes in an object with three properties - `value`, `type` and `decimals` - and returns a string. The function first checks if the value is 0 and, if so, returns '0'. If the value is not 0, the function defines a variable called `short` as an empty string. The function then defines a variable called `decimalCount` as a string of 0's equal in length to the decimal property of the object passed in. The function defines a variable called `format`. If the type property of the object passed in is `exponent`, `percent`, or `currency`, the format variable is defined as a string with the appropriate format for those types. If the type property is `number`, the format variable is defined as a string with the appropriate format for that type. If the type property is none of the above, the format variable is defined as the type property of the object passed in. The function then returns the value property of the object passed in, formatted according to the format variable.
+
+The `ReadableNumberParams` interface specifies that an object must have a value property that is a number or a string, and optionally may have unit, decimals, separator, and format properties.
+
+`formatValueTo` defines a function that takes in an object with various parameters and returns a string. The function first checks if the value passed in is a string and if that string can be converted into a number. If the value is not a string or cannot be converted into a number, the function will throw an error. If the value is greater than 0 but less than 1, the function will return the value with the given number of decimal places. If the value is not between 0 and 1, the function will throw an error unless a format is passed in. If a format is passed in, the function will use that format to generate a numeral, which is then returned as a string.
+
+`ReadableNumbersInterface` defines an interface for readable numbers.
+
+The `readableNumbers` constant defines an object with various methods for formatting numbers.
+
+## Functions
+
+- `toBaseUnits`
+- `toWholeUnits`
+- `generateNumeral`
+- `formatValueTo`
+
+## Types
+
+- `NumericalFormat`
+
+## Interfaces
+
+- `FormatGeneratorParams`
+- `ReadableNumberParams`
+- `ReadableNumbersInterface`
+
+## Constants
+
+- `readableNumbers: ReadableNumbersInterface`

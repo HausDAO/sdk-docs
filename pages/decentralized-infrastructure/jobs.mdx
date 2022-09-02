@@ -1,0 +1,17 @@
+# Jobs
+
+Jobs are how we take on-chain or [Subgraph](subgraphs/overview) data and process and transform it into a format that is easier to consume.
+
+![decen-infra-flow-diagram](https://i.imgur.com/OtJ9FCT.jpg)
+
+Jobs create data pipelines. Creating a data processing pipeline on one end is the producer and on the other is the consumer. They can be chained together to accomplish complex data processing flows.
+
+For example, with the DAOhaus Hub app we are concerned about vault balances for different DAOs. Calculating these balances is pretty complicated to do in the front-end and makes apps slow. To improve performance we do it with a back-end process.
+
+## Producer Jobs
+
+A producer is a task that is taking data from a public dataset and pushing it into a queue. Aggregating DAO data across different networks on our Subgraph into a database allows for easier querying. This could mean calculating totals that get pushed to Ceramic.
+
+## Consumer Jobs
+
+Consumers are calculating the aggregated data. They take things off of the queue to take action and complete the work.

@@ -1,0 +1,12 @@
+# [`general.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/common-utilities/src/types/general.ts)
+
+Exports types that can be used to type other values. The first type, `Noun`, is a type that describes a singular and plural form of a word. The second type, `ArbitraryState`, is a type that describes an object with any number of key-value pairs. The third type, `RequireAtLeastOne`, is a type that describes an object that must have at least one of the specified keys. The fourth type, `RequireOnlyOne`, is a type that describes an object that must have exactly one of the specified keys. The fifth type, `EthAddress`, is a type that describes an Ethereum address. The sixth and final type, `ValueOf`, is a utility type that gets the value of a given type.
+
+## Types
+
+- `Noun`
+- `ArbitraryState`
+- `RequireAtLeastOne<T, Keys extends keyof T = keyof T>`
+- `RequireOnlyOne<T, Keys extends keyof T = keyof T>`
+- `EthAddress`
+- `ValueOf<T>`

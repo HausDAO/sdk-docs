@@ -1,0 +1,19 @@
+# TokenLookup
+
+TokenLookup connects the loot and shares tokens with the DAO address. It provides a way to record the related DAO when summoned and is necessary based on the order of operations.
+
+## `id`
+
+Unique identifier and primary key of the entity (share or loot token address)
+
+```graphql
+id: ID!
+```
+
+## `dao`
+
+Related DAO
+
+```graphql
+dao: Bytes!
+```

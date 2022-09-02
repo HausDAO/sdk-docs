@@ -1,0 +1,68 @@
+# Component Library
+
+Component Library is highly opinionated. It mocks up the elements of the DAOhaus user interface and is scoped for anyone wanting to build an app that resembles this platform. The library is designed to enable building apps and features fast. Currently, customization is limited to those building a [React](https://reactjs.org/) app with DAOhaus styles.
+
+Inspired by Brad Frost's [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) system of components we wanted to design something declarative, accessible, and simple. These elements are intended to be composed to build application user interfaces.
+
+We leverage React, [styled-components](https://styled-components.com/) and the Radix [open-source color system](https://www.radix-ui.com/colors). Although these are customizable, if you have specific style needs, framework requirements or an existing design system this may not be for you.
+
+This library includes a [Storybook](https://storybook.daohaus.fun/) and is intended for use by the DAOhaus community. Since we "dogfood" our own package development we're continually adding to this library as new components are surfaced.
+
+## Levels
+
+Our components are organized as _Atoms_, _Molecules_, _Organisms_ and _Layouts_. This pattern give you the ability to install the entire package or the flexibility to pick-and-choose what you want. Although we bundle a lot together we provide the primitives when possible. If you do not like the way a molecule is composed you can rebuild it however you want. Each of the components has an associated [story](https://storybook.daohaus.fun/) for more detailed usage.
+
+### Atoms
+
+Atoms are the most primitive aspects of your user interface. Each atom is typically a single UI element such as a [`<Label>`](https://storybook.daohaus.fun/?path=/docs/atoms-label--base-label). These base-level elements are used to build up a larger components composing molecules and organisms.
+
+- `<Avatar />`
+- `<Badge />`
+- `<Button>`
+- `<Card>`
+- `<Checkbox />`
+- `<FileInput />`
+- `<HelperText>`
+- `<Icon>`
+- `<Input />`
+- `<Label>`
+- `<Link />`
+- `<Radio />`
+- `<Select />`
+- `<Switch />`
+- `<Tag>`
+- `<TextArea />`
+- `<Tooltip />`
+- `Typography`
+
+### Molecules
+
+Molecules combine atoms and are typically used to build up a larger components. An example is the [`<Toast />`](https://storybook.daohaus.fun/?path=/docs/molecules-toast--atom-toast) component which composes various atoms into multiple variations.
+
+- `<AddressDisplay />`
+- `Form`
+- `<DataIndicator />`
+- `<Dropdown>`
+- `<ProfileAvatar />`
+- `<Toast />`
+
+### Organisms
+
+Organisms incorporate both atoms and molecules into more complex entities. [`<NavigationTabs />`](https://storybook.daohaus.fun/?path=/docs/organisms-navigationtabs--navigation-tabs-example) is an example of these larger components.
+
+- `<AppSwitcher />`
+- `<MemberCard />`
+- `<NavigationTabs />`
+
+### Layouts
+
+Layouts allow you to organize the views in your app. They provide the foundation for you to add other component on. For example, [`<BiColumnLayout />`](https://storybook.daohaus.fun/?path=/docs/layouts-bicolumnlayout--base-bi-column-layout) seperates a view into left and right columns.
+
+- `<BiColumnLayout />`
+- `<FormLayout>`
+- `<OuterLayout>`
+- `<SingleColumLayout />`
+
+## Recipes
+
+- `DaoHausConnect`
