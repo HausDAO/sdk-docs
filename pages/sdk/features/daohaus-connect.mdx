@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 # DAOhaus Connect
 
 [DAOhaus Connect on npm](https://www.npmjs.com/package/@daohaus/daohaus-connect-feature)
@@ -131,7 +133,9 @@ const { switchNetwork } = useHausConnect()
 
 In addition to the helper utilities, DAOhaus Connect includes UI components that leverage the functionality included in the helpers.
 
-These can be imported from DAOhaus Connect:
+These can be imported from DAOhaus Connect.
+
+### DaoHausNav
 
 ```jsx
 import { DaoHausNav } from '@daohaus/daohaus-connect-feature'
@@ -144,6 +148,8 @@ Once imported, you can then use them in your app:
   <DaoHausNav />
 </YourLayoutComponent>
 ```
+
+### HausLayout
 
 DAOhaus Connect also exports a more cohesive `<HausLayout/>` component that includes the `<DaoHausNav/>` as well as additional layout components:
 
@@ -200,4 +206,14 @@ This component contains additional props, and this entire component can be passe
 </TXBuilder>
 ```
 
-This demonstrates how the `<HausLayout/>` component can be passed into the `<TxBuilder/>` as a child.
+This example demonstrates how the `<HausLayout/>` component can be passed into the `<TxBuilder/>` as a child and how optional props can be passed in to `<HausLayout/>` to customize the navigation and dropdown links.
+
+<Image
+  src="/hausnav.jpg"
+  alt="HausLayout with DaoHausNav"
+  width={800}
+  height={200}
+  layout="responsive"
+/>
+
+The links that are passed into the `navLinks` prop are used to conditionally render the `<DaoHausNav/>` component. The links that are passed into the `dropdownLinks` prop are used to conditionally render the dropdown links.
