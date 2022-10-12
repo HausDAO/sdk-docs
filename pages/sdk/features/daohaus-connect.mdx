@@ -1,22 +1,22 @@
 # DAOhaus Connect
 
-Package name: `daohaus-connect`
+[DAOhaus Connect on npm](https://www.npmjs.com/package/@daohaus/daohaus-connect-feature)
 
 **DAOhaus Connect** is our first feature library. Our feature libraries are a step beyond our component library, and either include additional functionality or leverage the DAO Data SDK to create "smart components." DAOhaus Connect provides a drop-in component for handling wallet connection, and includes additional functionality such as notifying users of unsupported networks, and switching networks.
 
-This is used throughout our applications and is designed to be leveraged by the larger DAOhaus community as a portal into the DAOhaus ecosystem.
+This package is used throughout our applications and is designed to be leveraged by the larger DAOhaus community as a portal into the DAOhaus ecosystem.
 
 ## Installation
 
 You can bring DAOhaus Connect into your own app by installing with `npm` or `yarn`:
 
 ```bash
-npm install daohaus-connect
+npm install @daohaus/daohaus-connect-feature
 # yarn
-yarn add daohaus-connect
+yarn add @daohaus/daohaus-connect-feature
 ```
 
-If you're using this from inside the monorepo, you can import directly from the package such as `import { HausConnectProvider } from 'daohaus-connect'`.
+If you're using this from inside the monorepo, you can import directly from the package such as `import { HausConnectProvider } from '@daohaus/daohaus-connect-feature';`.
 
 ## Usage
 
@@ -60,7 +60,7 @@ import { useHausConnect } from '@daohaus/daohaus-connect-feature'
 
 Once this is imported, you can destructure out additional tools:
 
-**Connect Wallet**
+### Connect Wallet
 
 ```jsx
 const { connectWallet } = useHausConnect()
@@ -74,7 +74,7 @@ This can then be passed into any Button with an `onClick` handler:
 </Button>
 ```
 
-**User State**
+### User State
 
 There are several helpers that can be used to determine the state of the connected user. You can destructure these from `useHausConnect`:
 
@@ -95,7 +95,7 @@ These can be used to conditionally render UI based on the state of the connected
 };
 ```
 
-**Getting a User's Address**
+### Getting a User's Address
 
 Once a user is connected, you can access their address by destructuring `useHausConnect`:
 
@@ -103,7 +103,7 @@ Once a user is connected, you can access their address by destructuring `useHaus
 const { address } = useHausConnect()
 ```
 
-**Provider and Chain Information**
+## Provider and Chain Information
 
 You're also able to access the provider and chain information by destructuring `useHausConnect`:
 
@@ -119,7 +119,7 @@ This can then be used with other tools such as TxBuilder:
 </TxBuilder>
 ```
 
-**Switching Networks**
+## Switching Networks
 
 Once a user is connected, you can access the `switchNetwork` function by destructuring `useHausConnect`:
 
@@ -130,3 +130,74 @@ const { switchNetwork } = useHausConnect()
 ## Using the UI Components
 
 In addition to the helper utilities, DAOhaus Connect includes UI components that leverage the functionality included in the helpers.
+
+These can be imported from DAOhaus Connect:
+
+```jsx
+import { DaoHausNav } from '@daohaus/daohaus-connect-feature'
+```
+
+Once imported, you can then use them in your app:
+
+```jsx
+<YourLayoutComponent>
+  <DaoHausNav />
+</YourLayoutComponent>
+```
+
+DAOhaus Connect also exports a more cohesive `<HausLayout/>` component that includes the `<DaoHausNav/>` as well as additional layout components:
+
+```jsx
+import { HausLayout } from '@daohaus/daohaus-connect-feature'
+```
+
+`<HausLayout/>` can be customized by passing in additional props, such as the `navLinks`:
+
+```jsx
+<HausLayout
+  pathname={location.pathname}
+  navLinks={[{ label: 'Home', href: '/'` }]}
+>
+  <YourApp /> // any other components that are needed
+</HausLayout>
+```
+
+This component contains additional props, and this entire component can be passed into other modular DAOhaus Components such as `<TxBuilder/>`. Let's look at this pattern that's used in the DAOhaus Core app.
+
+```jsx
+<TXBuilder
+  chainId={daochain}
+  provider={provider}
+  safeId={dao?.safeAddress}
+  daoId={daoid}
+  appState={{ dao }}
+>
+  <HausLayout
+    pathname={location.pathname}
+    navLinks={[
+      { label: 'Home', href: `/${address}` },
+      { label: 'DAO', href: `/molochv3/${daochain}/${daoid}` },
+      {
+        label: 'Proposals',
+        href: `/molochv3/${daochain}/${daoid}/proposals`,
+      },
+
+      { label: 'Safes', href: `/molochv3/${daochain}/${daoid}/safes` },
+      {
+        label: 'Members',
+        href: `/molochv3/${daochain}/${daoid}/members`,
+      },
+    ]}
+    dropdownLinks={[
+      {
+        label: 'Settings',
+        href: `/molochv3/${daochain}/${daoid}/settings`,
+      },
+    ]}
+  >
+    <Outlet />
+  </HausLayout>
+</TXBuilder>
+```
+
+This demonstrates how the `<HausLayout/>` component can be passed into the `<TxBuilder/>` as a child.
