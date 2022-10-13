@@ -1,5 +1,9 @@
 # [`explorer.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/common-utilities/src/utils/explorer.ts)
 
+Imports `ENDPOINTS` constant from the `../constants` file and `ValidNetwork` type from `../types`.
+
+Defines a function called `generateExplorerLink` which takes in an object with the properties `chainId`, `address` and `type`. The function returns a string consisting of the URL of the chain's explorer. If the `address` property is not specified, it returns an empty string.
+
 ## Functions
 
 - `generateExplorerLink`
