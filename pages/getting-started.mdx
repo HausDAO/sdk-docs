@@ -1,0 +1,36 @@
+# Getting Started
+
+Our monorepos use [Nx](https://nx.dev/) as a build system and for scaffolding. If this your first time using Nx, you'll have to install it globally on your system:
+`npm install -g nx`
+
+Here is a basic guide. Each package README (and `project.json`) will have more details about commands within each package.
+
+```bash
+
+`git clone git@github.com:HausDAO/daohaus-monorepo.git` or `git clone https://github.com/HausDAO/daohaus-monorepo.git`
+
+# clone the entire monorepo at the top level on the develop branch
+
+`yarn`
+# run yarn to install all of the packages and dependencies
+
+```
+
+## Features
+
+We're using a monorepo to manage our libraries and apps. Each library can be installed via `npm` for use in an external app or tool that you're building.
+
+Our libraries in the libs folder are structured to be consumed by our apps as well as used by external developers using our tooling.
+
+**Utility Libraries**
+These are libraries that are used to provide foundational utility that can be composed and integrated into applications.
+
+- DAO Data SDK
+- Component Library
+
+**Feature Libraries**
+These compose together other libraries such as the DAO Data SDK and the Component Library to create "smart components" that can be integrated into applications.
+
+- DAOhaus Connect
+- Tx Builder
+- Form Builder
