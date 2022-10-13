@@ -1,22 +1,30 @@
+import Image from 'next/image'
+
 # DAOhaus Connect
 
-Package name: `daohaus-connect`
+[DAOhaus Connect on npm](https://www.npmjs.com/package/@daohaus/daohaus-connect-feature)
 
-**DAOhaus Connect** is our first feature library. Our feature libraries are a step beyond our component library, and either include additional functionality or leverage the DAO Data SDK to create "smart components." DAOhaus Connect provides a drop-in component for handling wallet connection, and includes additional functionality such as notifying users of unsupported networks, switching networks, and displaying basic [Ceramic profile](https://ceramic.network/) data if the user has one set.
+**DAOhaus Connect** is our first feature library. Our feature libraries are a step beyond our component library, and either include additional functionality or leverage the DAO Data SDK to create "smart components." DAOhaus Connect provides a drop-in component for handling wallet connection, and includes additional functionality such as notifying users of unsupported networks, and switching networks.
 
-This is used throughout our applications and is designed to be leveraged by the larger DAOhaus community as a portal into the DAOhaus ecosystem.
+This package is used throughout our applications and is designed to be leveraged by the larger DAOhaus community as a portal into the DAOhaus ecosystem.
 
 ## Installation
 
-When this package is published on `npm` we'll have instructions on how to include it in your apps. If you're using this from inside the monorepo, you can import directly from the package.
+You can bring DAOhaus Connect into your own app by installing with `npm` or `yarn`:
 
-The package name for importing is `@daohaus/daohaus-connect-feature`. If you've pulled down the entire monorepo you can reference it via this namespace, such as `import { HausConnectProvider } from '@daohaus/daohaus-connect-feature'`.
+```bash
+npm install @daohaus/daohaus-connect-feature
+# yarn
+yarn add @daohaus/daohaus-connect-feature
+```
+
+If you're using this from inside the monorepo, you can import directly from the package such as `import { HausConnectProvider } from '@daohaus/daohaus-connect-feature';`.
 
 ## Usage
 
-DAOhaus Connect provides lots of drop-in functionality for handling wallet connection and associated functionlity such as working with the connected user's address, managing network configuration, and handling supported/unsupported networks.
+DAOhaus Connect provides drop-in functionality and utilities for handling wallet connection and associated functionlity such as working with the connected user's address, managing network configuration, and handling supported/unsupported networks.
 
-This is a React package and it works within React apps. We've used it with our Vite React apps, so this also works with Vite's `esbuild` based approach.
+This is a React package and it works within React apps.
 
 ### HausConnectProvider Context Provider
 
@@ -25,10 +33,10 @@ Start by importing the `HausConnectProvider` component from the `@daohaus/daohau
 ```jsx
 // main.tsx
 
-import { HausConnectProvider } from '@daohaus/daohaus-connect-feature';
+import { HausConnectProvider } from '@daohaus/daohaus-connect-feature'
 ```
 
-Once imported you can use it as you would any other Context Provider:
+Once imported you can use wrap your app with it as you would any other Context Provider:
 
 ```jsx
 // main.tsx
@@ -44,20 +52,20 @@ ReactDOM.render(
   document.getElementById('root')
 ```
 
-After including the `<HausConnectProvider/>` component in your app, you'll be able to access the associated Context throughout your app.
+### Core Utilities
 
-### Connecting to a Wallet
-
-DAOhaus Connect exposes several useful tools that can be used throughout your app. You can access these by importing `useHausConnect` from DAOhas Connect:
+DAOhaus Connect exposes several useful tools and UI components that can be leveraged. You can access these by importing `useHausConnect` from DAOhas Connect:
 
 ```jsx
-import { useHausConnect } from '@daohaus/daohaus-connect-feature';
+import { useHausConnect } from '@daohaus/daohaus-connect-feature'
 ```
 
-Once this is imported, you can destructure out useful tools, such as `connectWallet`:
+Once this is imported, you can destructure out additional tools:
+
+### Connect Wallet
 
 ```jsx
-const { connectWallet } = useHausConnect();
+const { connectWallet } = useHausConnect()
 ```
 
 This can then be passed into any Button with an `onClick` handler:
@@ -68,8 +76,144 @@ This can then be passed into any Button with an `onClick` handler:
 </Button>
 ```
 
-There are other useful tools such as interacting with Ceramic that we'll continue to add to the documentation.
+### User State
 
-## Examples
+There are several helpers that can be used to determine the state of the connected user. You can destructure these from `useHausConnect`:
 
-We use DAOhaus Connect in both our Hub and Summon apps.
+```jsx
+const { isConnected, isProfileLoading } = useHausConnect()
+```
+
+These can be used to conditionally render UI based on the state of the connected user, such as in this example:
+
+```jsx
+  if (!isConnected) {
+    return <ConnectWalletButton isSm={isSm} />;
+  }
+  if (isProfileLoading) {
+    return <LoadingButton isSm={isSm} />;
+  }
+  return <UserConnectedDropdown isSm={isSm} />;
+};
+```
+
+### Getting a User's Address
+
+Once a user is connected, you can access their address by destructuring `useHausConnect`:
+
+```jsx
+const { address } = useHausConnect()
+```
+
+## Provider and Chain Information
+
+You're also able to access the provider and chain information by destructuring `useHausConnect`:
+
+```jsx
+const { provider, chainId } = useHausConnect()
+```
+
+This can then be used with other tools such as TxBuilder:
+
+```jsx
+<TXBuilder provider={provider} chainId={chainId} appState={{}}>
+  // Your components
+</TxBuilder>
+```
+
+## Switching Networks
+
+Once a user is connected, you can access the `switchNetwork` function by destructuring `useHausConnect`:
+
+```jsx
+const { switchNetwork } = useHausConnect()
+```
+
+## Using the UI Components
+
+In addition to the helper utilities, DAOhaus Connect includes UI components that leverage the functionality included in the helpers.
+
+These can be imported from DAOhaus Connect.
+
+### DaoHausNav
+
+```jsx
+import { DaoHausNav } from '@daohaus/daohaus-connect-feature'
+```
+
+Once imported, you can then use them in your app:
+
+```jsx
+<YourLayoutComponent>
+  <DaoHausNav />
+</YourLayoutComponent>
+```
+
+### HausLayout
+
+DAOhaus Connect also exports a more cohesive `<HausLayout/>` component that includes the `<DaoHausNav/>` as well as additional layout components:
+
+```jsx
+import { HausLayout } from '@daohaus/daohaus-connect-feature'
+```
+
+`<HausLayout/>` can be customized by passing in additional props, such as the `navLinks`:
+
+```jsx
+<HausLayout
+  pathname={location.pathname}
+  navLinks={[{ label: 'Home', href: '/'` }]}
+>
+  <YourApp /> // any other components that are needed
+</HausLayout>
+```
+
+This component contains additional props, and this entire component can be passed into other modular DAOhaus Components such as `<TxBuilder/>`. Let's look at this pattern that's used in the DAOhaus Core app.
+
+```jsx
+<TXBuilder
+  chainId={daochain}
+  provider={provider}
+  safeId={dao?.safeAddress}
+  daoId={daoid}
+  appState={{ dao }}
+>
+  <HausLayout
+    pathname={location.pathname}
+    navLinks={[
+      { label: 'Home', href: `/${address}` },
+      { label: 'DAO', href: `/molochv3/${daochain}/${daoid}` },
+      {
+        label: 'Proposals',
+        href: `/molochv3/${daochain}/${daoid}/proposals`,
+      },
+
+      { label: 'Safes', href: `/molochv3/${daochain}/${daoid}/safes` },
+      {
+        label: 'Members',
+        href: `/molochv3/${daochain}/${daoid}/members`,
+      },
+    ]}
+    dropdownLinks={[
+      {
+        label: 'Settings',
+        href: `/molochv3/${daochain}/${daoid}/settings`,
+      },
+    ]}
+  >
+    <Outlet />
+  </HausLayout>
+</TXBuilder>
+```
+
+This example demonstrates how the `<HausLayout/>` component can be passed into the `<TxBuilder/>` as a child and how optional props can be passed in to `<HausLayout/>` to customize the navigation and dropdown links.
+
+<Image
+  src="/hausnav.jpg"
+  alt="HausLayout with DaoHausNav"
+  width={800}
+  height={200}
+  layout="responsive"
+/>
+
+The links that are passed into the `navLinks` prop are used to conditionally render the `<DaoHausNav/>` component. The links that are passed into the `dropdownLinks` prop are used to conditionally render the dropdown links.

@@ -4,10 +4,15 @@ This React-specific feature allows your application to easily make transactions 
 
 The core element is a React Context that bundles together generic transaction calls with subgraph polling within the function. This provides lifecycle methods that we can use to control UI based on synchronized events from within the React component.
 
-
 ## Installation
 
-When this package is published on `npm` we'll have instructions on how to include it in your apps. If you're using this from inside the monorepo, you can import directly from the package.
+You can install this via `npm` or `yarn` to use in your external app:
+
+```bash
+npm install @daohaus/tx-builder-feature
+# yarn
+yarn add @daohaus/tx-builder-feature
+```
 
 The package name for importing is `@daohaus/tx-buiilder-feature`. If you've pulled down the entire monorepo you can reference it via this namespace, such as `import { TXBuilder } from '@daohaus/tx-builder-feature';`.
 
@@ -19,7 +24,7 @@ Begin by importing the `TXBuilder` component from the `@daohaus/tx-builder-featu
 
 ```jsx
 // App.tsx
-import { TXBuilder } from '@daohaus/tx-builder-feature';
+import { TXBuilder } from '@daohaus/tx-builder-feature'
 ```
 
 Once `TXBuilder` is imported, you can wrap your component with it and pass in the connected user's `provider` and `chainId`, which can come in from DAOhaus Connect.
@@ -28,11 +33,11 @@ In this example, `TXBuilder` is used in combination with DAOhaus Connect, where 
 
 ```jsx
 // App.tsx
-const { provider, chainId } = useHausConnect();
+const { provider, chainId } = useHausConnect()
 
-<TXBuilder provider={provider} chainId={chainId}>
+;<TXBuilder provider={provider} chainId={chainId}>
   <YourComponents />
-</TXBuilder>;
+</TXBuilder>
 ```
 
 `<TXBuilder />` expects a `provider`, `chainId`, and `children` as props.
@@ -44,9 +49,9 @@ Tx Builder exposes useful functionality that you can use throughout your app as 
 ```jsx
 // Anywhere in your app
 
-`import { useTxBuilder } from '@daohaus/tx-builder-feature';`;
+;`import { useTxBuilder } from '@daohaus/tx-builder-feature';`
 
-const { fireTransaction } = useTxBuilder();
+const { fireTransaction } = useTxBuilder()
 ```
 
 You're then able to utilize the `fireTranscation` function which composes the transation calls and subgraph polling. For a more detailed example, look to the `SummonerForm.tsx` in our [Summon App](../../apps/summon-app/).
