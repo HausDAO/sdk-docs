@@ -30,3 +30,23 @@ These compose together other libraries such as the DAO Data SDK and the Componen
 - Form Builder
 
 Each of these libraries can be found in our [DAOhaus v3 Monorepo](https://github.com/HausDAO/daohaus-monorepo) in the `/libs` folder and are included in the Toolbox documentation.
+
+## DAOhaus v3 Monorepo Overview
+
+Our monorepo follows the [recommended Nx structure](https://nx.dev/structure/applications-and-libraries) with `apps` and `libs` folders. The `apps` folder contains our core applications, subgraphs, and infrastructure jobs. If you want to see how we utilize the libraries in the _DAOhaus Toolbox_ in our own v3 app development check out the packages in this folder.
+
+The `libs` folder contains the utilities, libraries, and infrastructure resources included in the _DAOhaus Toolbox_
+
+| Lib                                                                                                              | Monorepo Location              | npm Link                                                                                           |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------- |
+| [ABI Utilities](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/abi-utilities)                     | `libs/abi-utilities`           | [@daohaus/abi-utilities](https://www.npmjs.com/package/@daohaus/abi-utilities)                     |
+| [Contract Utilities](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilties)            | `libs/contract-utilties`       | [@daohaus/contract-utilities](https://www.npmjs.com/package/@daohaus/contract-utilities)           |
+| [Common Utilities](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/common-utilities)               | `libs/common-utilities`        | [@daohaus/common-utilities](https://www.npmjs.com/package/@daohaus/common-utilities)               |
+| [DAO Data SDK](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/dao-data)                           | `libs/dao-data-sdk`            | [@daohaus/dao-data](https://www.npmjs.com/package/@daohaus/dao-data)                               |
+| [Component Library (UI)](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/ui)                       | `libs/ui`                      | [@daohaus/ui](https://www.npmjs.com/package/@daohaus/ui)                                           |
+| [DAOhaus Connect Feature](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/daohaus-connect-feature) | `libs/daohaus-connect-feature` | [@daohaus/daohaus-connect-feature](https://www.npmjs.com/package/@daohaus/daohaus-connect-feature) |
+| [Form Builder Feature](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/form-builder)               | `libs/form-builderr`           | [@daohaus/haus-form-builder](https://www.npmjs.com/package/@daohaus/haus-form-builder)             |
+| [Tx Builder Feature](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/tx-builder-feature)           | `libs/tx-builder-feature`      | [@daohaus/tx-builder-feature](https://www.npmjs.com/package/@daohaus/tx-builder-feature)           |
+| [Helm Chart Infrastructure Playbook](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/infra-chart)  | `libs/infra-chart`             |
+
+These libraries are also published to `npm`. Each of the library docs contain links and installation instructions.
