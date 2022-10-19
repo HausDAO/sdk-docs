@@ -1,20 +1,14 @@
 # Getting Started
 
-Our monorepos use [Nx](https://nx.dev/) as a build system and for scaffolding. If this your first time using Nx, you'll have to install it globally on your system:
-`npm install -g nx`
+The _DAOhaus Toolbox_ is a modular, composable set of libraries that can be integrated into your own projects. It is a collection of tools that can be used to extend the DAOhaus functionality or to integrate DAOhaus functionality into an existing project.
 
-Here is a basic guide. Each package README (and `project.json`) will have more details about commands within each package.
+DAOhaus v3 represents a move toward increased decentralization in our infrastructure and tooling. As we identified the core elements in each area of v3's functionality, we began building the libraries and tooling to support it. We then used these libraries and tools in creating our own DAOhaus v3 applications.
 
-```bash
+When we made the decision for DAOhaus v3 to be much more composable and modular, we also decided that we would open source the tooling that we create in making v3. Every library and utility contained in the _DAOhaus Toolbox_ is used in our own DAOhaus v3 applications. We've made continual refinements and improvements along the way as we discover them in our own use cases.
 
-`git clone git@github.com:HausDAO/daohaus-monorepo.git` or `git clone https://github.com/HausDAO/daohaus-monorepo.git`
+There is a wide range of possibilities for communities and developers using our tooling. If you're looking to build a tool that extends DAOhaus functionality you can integrate our **Utility Libraries**. As a developer, you can choose if you want to use our component library and theming or if you'd like to build your own UI and styles and leverage our data libraries to query and interact with a user's DAOs.
 
-# clone the entire monorepo at the top level on the develop branch
-
-`yarn`
-# run yarn to install all of the packages and dependencies
-
-```
+We've also open sourced our _Feature Libraries_ which are typically a combination of UI and data elements to create specific functionality such as in _DAOhaus Connect_.
 
 ## Features
 
@@ -34,3 +28,5 @@ These compose together other libraries such as the DAO Data SDK and the Componen
 - DAOhaus Connect
 - Tx Builder
 - Form Builder
+
+Each of these libraries can be found in our [DAOhaus v3 Monorepo](https://github.com/HausDAO/daohaus-monorepo) in the `/libs` folder and are included in the Toolbox documentation.
