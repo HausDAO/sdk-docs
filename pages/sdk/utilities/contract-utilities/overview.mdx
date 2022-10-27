@@ -4,26 +4,33 @@ Contract utilities wrap the contracts and provides addresses and ABIs for the de
 
 These utilities are cross-correlated to [Write DAO Data](../../data/write-dao-data). They will help you make function calls and write data to the contracts.
 
-## [`contract`](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/contract-utilities/src/contract)
+## [`contract`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/)
 
 The Baal contract services are helpers that serve the deployed contract addresses being used by your network. For example, retrieving the Moloch v3 contract address for the Goerli network.
 
-- [`BaalContract.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/BaalContract.ts) creates a class for `BaalContract`
-- [`BaalSummoner.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/BaalSummoner.ts) creates a class for `BaalSummonerContract`
-- [`contracts.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/contracts.ts) exports functions to `getContractAddressesForChain` and `getContractsForChain`
-- [`types.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/contract/types.ts) exports interfaces for `Contracts` and `ContractsAndFactories` and types for `ContractConfig`
+This library wraps your contracts providing type protection for the arguments you need. This will help you make contract calls from your app. This is one way that our SDK facillitates writing contract data easier. It is combined with [Transaction Builder](/sdk/features/transaction-builder) in the form of a React application.
 
-This library wraps your contracts providing type protection for the arguments you need. This will help you make contract calls from your app. This is one way that our SDK facillitates writing contract data easier. It is combined with Transaction Builder in the form of a React application.
+### [`contract-meta.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/lib/contract-meta.ts)
 
-## [`external-abis`](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/contract-utilities/src/external-abis)
+Provides two functions for retrieving contract information. The first function, `getContractAddressesForChain`, takes a contract key and a network ID as parameters and returns the address of the contract deployed on that network. The second function, `getContractAbi` takes a contract ABI key as a parameter and returns the ABI for that contract.
 
-A way to store the current ABIs so apps can retrieve them. This is very useful in Web3 development. When you are instantiating contracts with various libraries you need the ABIs so the library knows what to do with them.
+### [`encoding-utils.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/lib/encoding-utils.ts)
 
-- [`gnosisMultisend.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/external-abis/gnosisMultisend.json)
-- [`gnosisProxy.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/external-abis/gnosisProxy.json)
-- [`superFluidProxy.json`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/external-abis/superFluidProxy.json)
+Imports various utility functions, and then defines a function for encoding data to be passed to a smart contract. It also defines a function for initializing smart contract parameters.
 
-## [`test`](https://github.com/HausDAO/daohaus-monorepo/tree/develop/libs/contract-utilities/src/test)
+### [`estimate-util.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/lib/estimate-util.ts)
 
-- [`addresses.spec.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/test/addresses.spec.ts)
-- [`baalContract.spec.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/test/baalContract.spec.ts)
+Function that takes in an object with three properties: `chainId`, `safeId`, and `data`. The function estimates gas usage for a safe transaction using the Gnosis Gas Estimation API. If the API returns an error, the function throws an error.
+
+### [`moloch-v3-contract.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/lib/moloch-v3-contract.ts)
+
+Creates a `MolochV3Contract` class with static methods for creating an instance of the class and for submitting and processing proposals.
+
+### [`moloch-v3-summoner-contract.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/src/lib/moloch-v3-summoner-contract.ts)
+
+Creates a `MolochV3SummonerContract` class with methods to deploy a Moloch v3 DAO.
+
+## [`test`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/test)
+
+- [`addresses.spec.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/test/addresses.spec.ts)
+- [`summoner.spec.ts`](https://github.com/HausDAO/daohaus-monorepo/blob/develop/libs/contract-utilities/test/summoner.spec.ts)
