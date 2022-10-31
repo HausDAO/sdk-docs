@@ -74,7 +74,9 @@ export default {
   prevLinks: true,
   nextLinks: true,
   footer: true,
-
+  primaryHue: {
+    dark: '300',
+  },
   footerEditLink: 'Edit this page on GitHub',
   footerText: (
     <>
