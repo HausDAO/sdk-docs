@@ -1,6 +1,9 @@
 export default {
-  github: 'https://github.com/hausdao/sdk-docs',
+  project: 'https://github.com/hausdao/sdk-docs',
   docsRepositoryBase: 'https://github.com/hausdao/sdk-docs/blob/main',
+  search: true,
+  unstable_flexsearch: true,
+  floatTOC: false,
   titleSuffix: 'HausDAO',
   logo: (
     <>
@@ -70,15 +73,14 @@ export default {
       ;
     </>
   ),
-  search: true,
-  prevLinks: true,
-  nextLinks: true,
-  footer: true,
-  primaryHue: {
-    dark: '300',
+
+  navigation: {
+    next: true,
+    prev: true,
   },
-  footerEditLink: 'Edit this page on GitHub',
-  footerText: (
+  footer: true,
+  editLink: 'Edit this page on GitHub',
+  footer: (
     <>
       Built with ❤️ by{' '}
       <a href="https://app.daohaus.club/dao/0x64/0xef3d8c4fbb1860fceab16595db7e650cd5ad51c1">
